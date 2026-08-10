@@ -146,6 +146,9 @@ h1, h2, h3{
   transform: rotateX(6deg) rotateY(-8deg);
   box-shadow: 0 60px 120px -30px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.03);
 }
+@media (hover: hover) and (pointer: fine){
+  .app-window--hero{ transition: transform 0.25s ease-out; will-change: transform; }
+}
 
 .features{ max-width: 1180px; margin: 0 auto; padding: 130px 32px 20px; }
 .feature-grid{
