@@ -194,7 +194,7 @@ h1, h2, h3{
 }
 .car-arrow:hover{ color: var(--text); border-color: var(--text-dim); }
 
-.desktop-mock{ display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 900px; overflow: hidden; }
+.desktop-mock{ display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 900px; overflow-x: auto; overflow-y: hidden; }
 
 .monitor-unit{ width: 900px; transform-origin: top center; }
 
