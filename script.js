@@ -121,8 +121,8 @@ const heroTiltCard = document.querySelector('.app-window--hero');
 const canHoverPrecise = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 if (heroTiltZone && heroTiltCard && canHoverPrecise) {
-  const BASE_ROT_X = 6;
-  const BASE_ROT_Y = -8;
+  const BASE_ROT_X = 0;
+  const BASE_ROT_Y = 0;
   const MAX_ROT = 8;
   const MAX_SHIFT = 22;
 
