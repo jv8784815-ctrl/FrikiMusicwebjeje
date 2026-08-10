@@ -248,7 +248,11 @@ h1, h2, h3{
 .fs-cover{
   display: block; width: 34%; aspect-ratio: 1; max-width: 190px;
   border-radius: 14%;
-  background: linear-gradient(150deg,#4a3016,#C97D3E 130%);
+  background:
+    url('assets/songs/nino.webp') center/cover no-repeat,
+    url('assets/songs/nino.jpg') center/cover no-repeat,
+    url('assets/songs/nino.jpeg') center/cover no-repeat,
+    linear-gradient(150deg,#4a3016,#C97D3E 130%);
   box-shadow: 0 30px 60px -20px rgba(201,125,62,0.25);
   margin-bottom: 5%;
 }
@@ -311,23 +315,23 @@ h1, h2, h3{
    soportan ambos formatos sin JavaScript ni image-set(). */
 .avatar-teto{
   background:
-    url('assets/artists/teto.webp') center/cover no-repeat,
-    url('assets/artists/teto.jpg') center/cover no-repeat,
-    url('assets/artists/teto.jpeg') center/cover no-repeat,
+    url('assets/artist/teto.webp') center/cover no-repeat,
+    url('assets/artist/teto.jpg') center/cover no-repeat,
+    url('assets/artist/teto.jpeg') center/cover no-repeat,
     linear-gradient(150deg,#C97D3E,#6f3d1e);
 }
 .avatar-miku{
   background:
-    url('assets/artists/miku.webp') center/cover no-repeat,
-    url('assets/artists/miku.jpg') center/cover no-repeat,
-    url('assets/artists/miku.jpeg') center/cover no-repeat,
+    url('assets/artist/miku.webp') center/cover no-repeat,
+    url('assets/artist/miku.jpg') center/cover no-repeat,
+    url('assets/artist/miku.jpeg') center/cover no-repeat,
     linear-gradient(150deg,#5a9c98,#264d4a);
 }
 .avatar-miloj{
   background:
-    url('assets/artists/miloj.webp') center/cover no-repeat,
-    url('assets/artists/miloj.jpg') center/cover no-repeat,
-    url('assets/artists/miloj.jpeg') center/cover no-repeat,
+    url('assets/artist/miloj.webp') center/cover no-repeat,
+    url('assets/artist/miloj.jpg') center/cover no-repeat,
+    url('assets/artist/miloj.jpeg') center/cover no-repeat,
     linear-gradient(150deg,#7a7468,#332f27);
 }
 
