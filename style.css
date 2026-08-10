@@ -313,18 +313,21 @@ h1, h2, h3{
   background:
     url('assets/artists/teto.webp') center/cover no-repeat,
     url('assets/artists/teto.jpg') center/cover no-repeat,
+    url('assets/artists/teto.jpeg') center/cover no-repeat,
     linear-gradient(150deg,#C97D3E,#6f3d1e);
 }
 .avatar-miku{
   background:
     url('assets/artists/miku.webp') center/cover no-repeat,
     url('assets/artists/miku.jpg') center/cover no-repeat,
+    url('assets/artists/miku.jpeg') center/cover no-repeat,
     linear-gradient(150deg,#5a9c98,#264d4a);
 }
 .avatar-miloj{
   background:
     url('assets/artists/miloj.webp') center/cover no-repeat,
     url('assets/artists/miloj.jpg') center/cover no-repeat,
+    url('assets/artists/miloj.jpeg') center/cover no-repeat,
     linear-gradient(150deg,#7a7468,#332f27);
 }
 
@@ -338,18 +341,21 @@ h1, h2, h3{
   background:
     url('assets/albums/111.webp') center/cover no-repeat,
     url('assets/albums/111.jpg') center/cover no-repeat,
+    url('assets/albums/111.jpeg') center/cover no-repeat,
     linear-gradient(160deg,#332b20,#5a3b1c);
 }
 .cover-2{
   background:
     url('assets/albums/restart.webp') center/cover no-repeat,
     url('assets/albums/restart.jpg') center/cover no-repeat,
+    url('assets/albums/restart.jpeg') center/cover no-repeat,
     linear-gradient(160deg,#1f2c2b,#2f4a47);
 }
 .cover-3{
   background:
     url('assets/albums/roshin-squid.webp') center/cover no-repeat,
     url('assets/albums/roshin-squid.jpg') center/cover no-repeat,
+    url('assets/albums/roshin-squid.jpeg') center/cover no-repeat,
     linear-gradient(160deg,#26221c,#443a2a);
 }
 
@@ -362,18 +368,21 @@ h1, h2, h3{
   background:
     url('assets/songs/nino.webp') center/cover no-repeat,
     url('assets/songs/nino.jpg') center/cover no-repeat,
+    url('assets/songs/nino.jpeg') center/cover no-repeat,
     linear-gradient(160deg,#3e2a1a,#C97D3E66);
 }
 .thumb-2{
   background:
     url('assets/songs/roki.webp') center/cover no-repeat,
     url('assets/songs/roki.jpg') center/cover no-repeat,
+    url('assets/songs/roki.jpeg') center/cover no-repeat,
     linear-gradient(160deg,#1f2c2b,#2f4a47);
 }
 .thumb-3{
   background:
     url('assets/songs/electric-angel.webp') center/cover no-repeat,
     url('assets/songs/electric-angel.jpg') center/cover no-repeat,
+    url('assets/songs/electric-angel.jpeg') center/cover no-repeat,
     linear-gradient(160deg,#332b20,#5a3b1c);
 }
 
@@ -391,6 +400,7 @@ h1, h2, h3{
   background:
     url('assets/songs/nino.webp') center/cover no-repeat,
     url('assets/songs/nino.jpg') center/cover no-repeat,
+    url('assets/songs/nino.jpeg') center/cover no-repeat,
     linear-gradient(160deg,#3e2a1a,#C97D3E77);
 }
 .mini-meta{ flex: 1; min-width: 0; }
