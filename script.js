@@ -13,14 +13,24 @@ const captionDesc = document.querySelector('.car-caption p');
 
 const mockWrap = document.querySelector('.desktop-mock');
 const mockUnit = document.querySelector('.monitor-unit');
-const MOCK_REFERENCE_WIDTH = 900; // ancho de diseño original del mockup
+const MOCK_REFERENCE_WIDTH = 900;
+
+const supportsZoom = window.CSS && CSS.supports && CSS.supports('zoom', '1');
 
 function scaleMock() {
   if (!mockWrap || !mockUnit) return;
-  mockUnit.style.transform = 'scale(1)';
   const available = mockWrap.clientWidth;
   const scale = Math.min(1, available / MOCK_REFERENCE_WIDTH);
-  mockUnit.style.transform = `scale(${scale})`;
+
+  if (supportsZoom) {
+    mockUnit.style.transform = '';
+    mockUnit.style.zoom = 1;
+    mockUnit.style.zoom = scale;
+  } else {
+    mockUnit.style.zoom = '';
+    mockUnit.style.transform = 'scale(1)';
+    mockUnit.style.transform = `scale(${scale})`;
+  }
   mockWrap.style.height = `${mockUnit.getBoundingClientRect().height}px`;
 }
 
@@ -90,7 +100,7 @@ if (dlVersionEl) {
     .then(({ tag }) => {
       if (tag) dlVersionEl.textContent = `Versión ${tag.replace(/^v/i, '')}`;
     })
-    .catch(() => { /* se queda el texto genérico */ });
+    .catch(() => { /* jeje */ });
 }
 
 if (downloadBtn) {
