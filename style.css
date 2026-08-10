@@ -1,6 +1,3 @@
-/* ===== Tokens =====
-   Identidad real de la app (App.xaml): negro cálido + cobre.
-   Se usa en todo el sitio, no solo dentro de la maqueta. */
 :root{
   --bg: #0F0E0D;
   --bg-raised: #171614;
@@ -52,7 +49,6 @@ h1, h2, h3{
   letter-spacing: -0.015em;
 }
 
-/* ===== Buttons ===== */
 .btn{
   display: inline-flex; align-items: center; justify-content: center;
   padding: 14px 26px;
@@ -70,7 +66,6 @@ h1, h2, h3{
 .btn-lg{ padding: 16px 32px; font-size: 15px; }
 .btn-disabled{ opacity: 0.5; cursor: not-allowed; pointer-events: none; }
 
-/* ===== Nav ===== */
 .nav{
   position: sticky; top: 0; z-index: 100;
   background: rgba(15,14,13,0.82);
@@ -96,7 +91,6 @@ h1, h2, h3{
 }
 .nav-links a:not(.btn):hover{ color: var(--text); }
 
-/* ===== Section shared ===== */
 .section-head{
   max-width: 620px;
   margin: 0 auto 52px;
@@ -106,7 +100,6 @@ h1, h2, h3{
 .section-head h2{ font-size: clamp(26px, 3.6vw, 38px); line-height: 1.15; }
 .section-sub{ color: var(--text-dim); font-size: 15px; margin-top: 14px; }
 
-/* ===== Hero ===== */
 .hero{
   max-width: 1180px; margin: 0 auto;
   padding: 100px 32px 0;
@@ -154,7 +147,6 @@ h1, h2, h3{
   box-shadow: 0 60px 120px -30px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.03);
 }
 
-/* ===== Feature icon+card ===== */
 .features{ max-width: 1180px; margin: 0 auto; padding: 130px 32px 20px; }
 .feature-grid{
   display: grid;
@@ -180,7 +172,6 @@ h1, h2, h3{
 .feature-card h3{ font-size: 16.5px; margin-bottom: 9px; }
 .feature-card p{ font-size: 13.5px; color: var(--text-dim); line-height: 1.55; }
 
-/* ===== Interfaz / carousel ===== */
 .interfaz{ max-width: 1180px; margin: 0 auto; padding: 130px 32px 20px; }
 
 .carousel{
@@ -232,7 +223,6 @@ h1, h2, h3{
 }
 .desktop-scene.is-active{ display: block; }
 
-/* ---- Vista 1: pantalla completa (F11 / Reproduciendo ahora) ---- */
 .view-full{
   background: radial-gradient(ellipse at 30% 20%, #241a10 0%, #100d0a 55%, #0a0908 100%);
   padding: 3.2% 4.4% 0;
@@ -280,7 +270,6 @@ h1, h2, h3{
   display: flex; align-items: center; justify-content: center;
 }
 
-/* ---- Vista 2: ventana compacta ---- */
 .view-compact.is-active{ display: block; }
 
 .ghost-window{
@@ -364,7 +353,6 @@ h1, h2, h3{
 .monitor-stand{ width: 14px; height: 40px; background: linear-gradient(#141412,#050505); }
 .monitor-base{ width: 150px; height: 7px; border-radius: 3px; background: #050505; margin-top: -1px; }
 
-/* ---- Carousel meta / thumbs ---- */
 .car-meta{
   max-width: 900px; margin: 34px auto 0;
   display: flex; align-items: center; justify-content: space-between;
@@ -386,7 +374,6 @@ h1, h2, h3{
 .car-thumb:hover{ color: var(--text); }
 .car-thumb.is-active{ background: var(--accent); border-color: var(--accent); color: #14100B; font-weight: 600; }
 
-/* ===== Download ===== */
 .download{ max-width: 900px; margin: 0 auto; padding: 130px 32px 140px; }
 .download-card{
   display: flex; align-items: center; justify-content: space-between;
@@ -409,7 +396,6 @@ h1, h2, h3{
 .dl-version{ font-family: var(--mono); font-size: 11.5px; color: var(--text-faint); }
 .download-note{ text-align: center; margin-top: 22px; font-size: 12.5px; color: var(--text-faint); font-family: var(--mono); }
 
-/* ===== Footer ===== */
 .site-footer{ border-top: 1px solid var(--line-soft); padding: 32px; }
 .footer-inner{
   max-width: 1180px; margin: 0 auto;
@@ -418,7 +404,6 @@ h1, h2, h3{
 }
 .site-footer p{ font-size: 12.5px; color: var(--text-faint); }
 
-/* ===== Responsive ===== */
 @media (max-width: 860px){
   .nav-links a:not(.btn){ display: none; }
   .feature-grid{ grid-template-columns: 1fr 1fr; }
