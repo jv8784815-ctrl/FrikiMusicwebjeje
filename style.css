@@ -224,6 +224,18 @@ h1, h2, h3{
   display: none;
   border-radius: 4px 4px 0 0;
 }
+/* Fondo de escritorio de la vista "Ventana compacta" (la segunda demo).
+   Si subes assets/wallpaper.webp / .jpg / .jpeg, se usa esa foto como
+   fondo; si no existe ninguno, se mantiene el degradado negro original. */
+.desktop-scene.view-compact{
+  background:
+    url('assets/wallpaper.webp') center/cover no-repeat,
+    url('assets/wallpaper.jpg') center/cover no-repeat,
+    url('assets/wallpaper.jpeg') center/cover no-repeat,
+    radial-gradient(ellipse at 20% 15%, #1a1a18 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 80%, #161614 0%, transparent 50%),
+    #0d0d0c;
+}
 .desktop-scene.is-active{ display: block; }
 
 .view-full{
