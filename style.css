@@ -305,26 +305,78 @@ h1, h2, h3{
 .artist-chip{ width: 46px; flex-shrink: 0; text-align: center; }
 .artist-chip .avatar{ display: block; width: 40px; height: 40px; border-radius: 50%; margin: 0 auto 5px; }
 .artist-chip em{ font-style: normal; font-size: 7px; color: #84807A; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.avatar-teto{ background: url('assets/artists/teto.jpg') center/cover no-repeat, linear-gradient(150deg,#C97D3E,#6f3d1e); }
-.avatar-miku{ background: url('assets/artists/miku.jpg') center/cover no-repeat, linear-gradient(150deg,#5a9c98,#264d4a); }
-.avatar-miloj{ background: url('assets/artists/miloj.jpg') center/cover no-repeat, linear-gradient(150deg,#7a7468,#332f27); }
+
+/* Cada avatar intenta primero el .webp; si no existe o el navegador no puede
+   decodificarlo, esa capa queda transparente y se ve el .jpg debajo. Así se
+   soportan ambos formatos sin JavaScript ni image-set(). */
+.avatar-teto{
+  background:
+    url('assets/artists/teto.webp') center/cover no-repeat,
+    url('assets/artists/teto.jpg') center/cover no-repeat,
+    linear-gradient(150deg,#C97D3E,#6f3d1e);
+}
+.avatar-miku{
+  background:
+    url('assets/artists/miku.webp') center/cover no-repeat,
+    url('assets/artists/miku.jpg') center/cover no-repeat,
+    linear-gradient(150deg,#5a9c98,#264d4a);
+}
+.avatar-miloj{
+  background:
+    url('assets/artists/miloj.webp') center/cover no-repeat,
+    url('assets/artists/miloj.jpg') center/cover no-repeat,
+    linear-gradient(150deg,#7a7468,#332f27);
+}
 
 .album-row{ display: flex; gap: 8px; }
 .album-card{ width: 56px; flex-shrink: 0; }
 .album-card .cover{ display: block; width: 56px; height: 56px; margin-bottom: 5px; }
 .album-card em{ font-style: normal; font-size: 8px; color: #EDEAE2; display: block; }
 .album-card small{ font-size: 6.8px; color: #84807A; }
-.cover-1{ background: url('assets/albums/111.jpg') center/cover no-repeat, linear-gradient(160deg,#332b20,#5a3b1c); }
-.cover-2{ background: url('assets/albums/restart.jpg') center/cover no-repeat, linear-gradient(160deg,#1f2c2b,#2f4a47); }
-.cover-3{ background: url('assets/albums/roshin-squid.jpg') center/cover no-repeat, linear-gradient(160deg,#26221c,#443a2a); }
+
+.cover-1{
+  background:
+    url('assets/albums/111.webp') center/cover no-repeat,
+    url('assets/albums/111.jpg') center/cover no-repeat,
+    linear-gradient(160deg,#332b20,#5a3b1c);
+}
+.cover-2{
+  background:
+    url('assets/albums/restart.webp') center/cover no-repeat,
+    url('assets/albums/restart.jpg') center/cover no-repeat,
+    linear-gradient(160deg,#1f2c2b,#2f4a47);
+}
+.cover-3{
+  background:
+    url('assets/albums/roshin-squid.webp') center/cover no-repeat,
+    url('assets/albums/roshin-squid.jpg') center/cover no-repeat,
+    linear-gradient(160deg,#26221c,#443a2a);
+}
 
 .song-list{ margin-top: 3px; }
 .song-row{ display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #211f1c; }
 .song-row--active .song-meta em{ color: var(--accent); }
 .song-thumb{ width: 22px; height: 22px; flex-shrink: 0; }
-.thumb-1{ background: url('assets/songs/nino.jpg') center/cover no-repeat, linear-gradient(160deg,#3e2a1a,#C97D3E66); }
-.thumb-2{ background: url('assets/songs/roki.jpg') center/cover no-repeat, linear-gradient(160deg,#1f2c2b,#2f4a47); }
-.thumb-3{ background: url('assets/songs/electric-angel.jpg') center/cover no-repeat, linear-gradient(160deg,#332b20,#5a3b1c); }
+
+.thumb-1{
+  background:
+    url('assets/songs/nino.webp') center/cover no-repeat,
+    url('assets/songs/nino.jpg') center/cover no-repeat,
+    linear-gradient(160deg,#3e2a1a,#C97D3E66);
+}
+.thumb-2{
+  background:
+    url('assets/songs/roki.webp') center/cover no-repeat,
+    url('assets/songs/roki.jpg') center/cover no-repeat,
+    linear-gradient(160deg,#1f2c2b,#2f4a47);
+}
+.thumb-3{
+  background:
+    url('assets/songs/electric-angel.webp') center/cover no-repeat,
+    url('assets/songs/electric-angel.jpg') center/cover no-repeat,
+    linear-gradient(160deg,#332b20,#5a3b1c);
+}
+
 .song-meta{ flex: 1; min-width: 0; }
 .song-meta em{ font-style: normal; font-size: 9px; color: #EDEAE2; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .song-meta small{ font-size: 7.3px; color: #84807A; }
@@ -334,7 +386,13 @@ h1, h2, h3{
 .mini-progress{ height: 2px; background: #2B2926; margin-bottom: 8px; }
 .mini-progress span{ display: block; height: 100%; background: var(--accent); }
 .mini-row{ display: flex; align-items: center; gap: 8px; }
-.mini-thumb{ width: 26px; height: 26px; flex-shrink: 0; background: url('assets/songs/nino.jpg') center/cover no-repeat, linear-gradient(160deg,#3e2a1a,#C97D3E77); }
+.mini-thumb{
+  width: 26px; height: 26px; flex-shrink: 0;
+  background:
+    url('assets/songs/nino.webp') center/cover no-repeat,
+    url('assets/songs/nino.jpg') center/cover no-repeat,
+    linear-gradient(160deg,#3e2a1a,#C97D3E77);
+}
 .mini-meta{ flex: 1; min-width: 0; }
 .mini-meta em{ font-style: normal; font-size: 9.5px; color: #EDEAE2; display: block; }
 .mini-meta small{ font-size: 7.8px; color: #84807A; }
