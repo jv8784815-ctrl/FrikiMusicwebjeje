@@ -14,13 +14,14 @@ const captionDesc = document.querySelector('.car-caption p');
 const mockWrap = document.querySelector('.desktop-mock');
 const mockUnit = document.querySelector('.monitor-unit');
 const MOCK_REFERENCE_WIDTH = 900;
+const MOCK_MIN_SCALE = 0.55;
 
 const supportsZoom = window.CSS && CSS.supports && CSS.supports('zoom', '1');
 
 function scaleMock() {
   if (!mockWrap || !mockUnit) return;
   const available = mockWrap.clientWidth;
-  const scale = Math.min(1, available / MOCK_REFERENCE_WIDTH);
+  const scale = Math.max(MOCK_MIN_SCALE, Math.min(1, available / MOCK_REFERENCE_WIDTH));
 
   if (supportsZoom) {
     mockUnit.style.transform = '';
@@ -100,7 +101,7 @@ if (dlVersionEl) {
     .then(({ tag }) => {
       if (tag) dlVersionEl.textContent = `Versión ${tag.replace(/^v/i, '')}`;
     })
-    .catch(() => { /* jeje */ });
+    .catch(() => { /* se queda el texto genérico */ });
 }
 
 if (downloadBtn) {
