@@ -13,7 +13,7 @@ const captionDesc = document.querySelector('.car-caption p');
 
 const mockWrap = document.querySelector('.desktop-mock');
 const mockUnit = document.querySelector('.monitor-unit');
-const MOCK_REFERENCE_WIDTH = 900;
+const MOCK_REFERENCE_WIDTH = 900; // ancho de diseño original del mockup
 
 function scaleMock() {
   if (!mockWrap || !mockUnit) return;
@@ -90,7 +90,7 @@ if (dlVersionEl) {
     .then(({ tag }) => {
       if (tag) dlVersionEl.textContent = `Versión ${tag.replace(/^v/i, '')}`;
     })
-    .catch(() => {});
+    .catch(() => { /* se queda el texto genérico */ });
 }
 
 if (downloadBtn) {
@@ -102,5 +102,35 @@ if (downloadBtn) {
       downloadBtn.textContent = original;
       downloadBtn.classList.remove('btn-disabled');
     }, 2500);
+  });
+}
+
+const heroTiltZone = document.querySelector('.hero-shot');
+const heroTiltCard = document.querySelector('.app-window--hero');
+const canHoverPrecise = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+if (heroTiltZone && heroTiltCard && canHoverPrecise) {
+  const BASE_ROT_X = 6;
+  const BASE_ROT_Y = -8;
+  const MAX_ROT = 8;
+  const MAX_SHIFT = 22;
+
+  heroTiltZone.addEventListener('mousemove', (e) => {
+    const rect = heroTiltZone.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+
+    const shiftX = px * MAX_SHIFT * 2;
+    const shiftY = py * MAX_SHIFT * 2;
+    const rotY = BASE_ROT_Y + px * MAX_ROT * 2;
+    const rotX = BASE_ROT_X - py * MAX_ROT * 2;
+
+    heroTiltCard.style.transform =
+      `translate(${shiftX}px, ${shiftY}px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+  });
+
+  heroTiltZone.addEventListener('mouseleave', () => {
+    heroTiltCard.style.transform =
+      `translate(0px, 0px) rotateX(${BASE_ROT_X}deg) rotateY(${BASE_ROT_Y}deg)`;
   });
 }
