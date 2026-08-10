@@ -224,9 +224,6 @@ h1, h2, h3{
   display: none;
   border-radius: 4px 4px 0 0;
 }
-/* Fondo de escritorio de la vista "Ventana compacta" (la segunda demo).
-   Si subes assets/wallpaper.webp / .jpg / .jpeg, se usa esa foto como
-   fondo; si no existe ninguno, se mantiene el degradado negro original. */
 .desktop-scene.view-compact{
   background:
     url('assets/wallpaper.webp') center/cover no-repeat,
@@ -322,9 +319,6 @@ h1, h2, h3{
 .artist-chip .avatar{ display: block; width: 40px; height: 40px; border-radius: 50%; margin: 0 auto 5px; }
 .artist-chip em{ font-style: normal; font-size: 7px; color: #84807A; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* Cada avatar intenta primero el .webp; si no existe o el navegador no puede
-   decodificarlo, esa capa queda transparente y se ve el .jpg debajo. Así se
-   soportan ambos formatos sin JavaScript ni image-set(). */
 .avatar-teto{
   background:
     url('assets/artists/teto.webp') center/cover no-repeat,
