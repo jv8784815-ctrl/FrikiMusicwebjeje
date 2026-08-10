@@ -1,4 +1,3 @@
-// ===== Carrusel de interfaz: pantalla completa / ventana compacta =====
 const slides = [
   { id: 'full', title: 'Pantalla completa', desc: 'Portada grande, letra sincronizada al lado y controles abajo. Se activa con F11.' },
   { id: 'compact', title: 'Ventana compacta', desc: 'Angosta y flotante, para dejarla en un rincón del escritorio mientras hacés otra cosa.' },
@@ -12,13 +11,9 @@ const indexEl = document.querySelector('.car-index');
 const captionTitle = document.querySelector('.car-caption strong');
 const captionDesc = document.querySelector('.car-caption p');
 
-// ===== Escalar el mockup de escritorio completo en pantallas angostas =====
-// En vez de reacomodar el contenido (lo que lo hacía ver como una app de
-// celular), se escala TODO el conjunto como una sola unidad. Así siempre
-// se ve igual que la app de Windows, solo que más chico.
 const mockWrap = document.querySelector('.desktop-mock');
 const mockUnit = document.querySelector('.monitor-unit');
-const MOCK_REFERENCE_WIDTH = 900; // ancho de diseño original del mockup
+const MOCK_REFERENCE_WIDTH = 900;
 
 function scaleMock() {
   if (!mockWrap || !mockUnit) return;
@@ -66,7 +61,6 @@ if (document.fonts && document.fonts.ready) {
 }
 scaleMock();
 
-// ===== Fade-in sutil al entrar en viewport =====
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reduce) {
   const targets = document.querySelectorAll('.feature-card, .desktop-mock, .download-card, .hero-shot');
@@ -87,9 +81,6 @@ if (!reduce) {
   targets.forEach(el => io.observe(el));
 }
 
-// ===== Descarga directa del instalador =====
-// El link real y el repo viven en el servidor (api/download.js),
-// acá el navegador del visitante solo pide /api/download.
 const downloadBtn = document.getElementById('downloadBtn');
 const dlVersionEl = document.getElementById('dlVersion');
 
@@ -99,7 +90,7 @@ if (dlVersionEl) {
     .then(({ tag }) => {
       if (tag) dlVersionEl.textContent = `Versión ${tag.replace(/^v/i, '')}`;
     })
-    .catch(() => { /* se queda el texto genérico */ });
+    .catch(() => {});
 }
 
 if (downloadBtn) {
