@@ -272,7 +272,7 @@ h1, h2, h3{
 .fs-cover{
   display: block; width: 34%; aspect-ratio: 1; max-width: 190px;
   border-radius: 14%;
-  background: linear-gradient(150deg,#4a3016,#C97D3E 130%);
+  background: url('assets/songs/nino.webp') center/cover no-repeat, url('assets/songs/nino.jpg') center/cover no-repeat, linear-gradient(150deg,#4a3016,#C97D3E 130%);
   box-shadow: 0 30px 60px -20px rgba(201,125,62,0.25);
   margin-bottom: 5%;
 }
@@ -299,6 +299,14 @@ h1, h2, h3{
 
 /* ---- Vista 2: ventana compacta ---- */
 .view-compact.is-active{ display: block; }
+.view-compact{
+  background:
+    linear-gradient(180deg, rgba(10,9,8,0.32), rgba(10,9,8,0.6)),
+    url('assets/wallpaper.webp') center/cover no-repeat,
+    radial-gradient(ellipse at 20% 15%, #1a1a18 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 80%, #161614 0%, transparent 50%),
+    #0d0d0c;
+}
 
 .ghost-window{
   position: absolute; top: 8%; right: 6%; width: 30%; height: 46%;
