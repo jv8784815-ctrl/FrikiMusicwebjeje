@@ -75,6 +75,30 @@
     <div class="hero-shot">
       <div class="hero-glow"></div>
 
+      <p class="deck-label">
+        <svg class="deck-bars" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="deckBarsGrad" x1="0" y1="18" x2="18" y2="0">
+              <stop offset="0" stop-color="#A855F7"/>
+              <stop offset="1" stop-color="#EC4899"/>
+            </linearGradient>
+          </defs>
+          <rect x="0.5" y="7.5" width="2.6" height="7.5" rx="1.3" fill="url(#deckBarsGrad)"/>
+          <rect x="4.4" y="4.5" width="2.6" height="10.5" rx="1.3" fill="url(#deckBarsGrad)"/>
+          <rect x="8.3" y="1.8" width="2.6" height="13.2" rx="1.3" fill="url(#deckBarsGrad)"/>
+          <rect x="12.2" y="4.5" width="2.6" height="10.5" rx="1.3" fill="url(#deckBarsGrad)"/>
+          <rect x="16.1" y="7.5" width="1.8" height="7.5" rx="0.9" fill="url(#deckBarsGrad)"/>
+        </svg>
+        Interfaz Android
+        <svg class="deck-bars" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <rect x="0.5" y="7.5" width="2.6" height="7.5" rx="1.3" fill="url(#deckBarsGrad)"/>
+          <rect x="4.4" y="4.5" width="2.6" height="10.5" rx="1.3" fill="url(#deckBarsGrad)"/>
+          <rect x="8.3" y="1.8" width="2.6" height="13.2" rx="1.3" fill="url(#deckBarsGrad)"/>
+          <rect x="12.2" y="4.5" width="2.6" height="10.5" rx="1.3" fill="url(#deckBarsGrad)"/>
+          <rect x="16.1" y="7.5" width="1.8" height="7.5" rx="0.9" fill="url(#deckBarsGrad)"/>
+        </svg>
+      </p>
+
       <div class="card-deck" id="cardDeck">
         <div class="deck-backdrop" id="deckBackdrop"></div>
 
@@ -446,79 +470,6 @@
         </div>
       </div>
 
-      <div class="phone-mock" role="img" aria-label="FrikiMusic corriendo en un celular Android">
-        <div class="phone-unit">
-          <div class="phone-shell">
-            <span class="phone-notch"></span>
-            <div class="phone-screen">
-              <div class="phone-statusbar">
-                <span class="ps-time">14:07</span>
-                <div class="ps-icons">
-                  <svg width="13" height="9" viewBox="0 0 14 10" fill="#EDEAE2"><rect x="0" y="6" width="2.4" height="4" rx="0.5"/><rect x="3.8" y="4" width="2.4" height="6" rx="0.5"/><rect x="7.6" y="2" width="2.4" height="8" rx="0.5"/><rect x="11.4" y="0" width="2.4" height="10" rx="0.5"/></svg>
-                  <svg width="13" height="10" viewBox="0 0 16 12" fill="none" stroke="#EDEAE2" stroke-width="1.3"><path d="M1,4 C5,0.5 11,0.5 15,4 M3.4,6.6 C6,4.4 10,4.4 12.6,6.6 M6,9.2 C7.2,8.2 8.8,8.2 10,9.2" stroke-linecap="round"/></svg>
-                  <svg width="20" height="10" viewBox="0 0 24 12"><rect x="0.6" y="0.6" width="20" height="10.8" rx="2.4" fill="none" stroke="#EDEAE2" stroke-width="1.1"/><rect x="2" y="2" width="15" height="8" rx="1.2" fill="#EDEAE2"/><rect x="21.2" y="3.6" width="1.8" height="4.8" rx="0.8" fill="#EDEAE2"/></svg>
-                </div>
-              </div>
-
-              <div class="app-window app-window--phone">
-                <div class="app-header">
-                  <div class="app-header-row">
-                    <span class="app-logo">FRIKIMUSIC</span>
-                    <div class="app-icons">
-                      <svg width="14" height="12" viewBox="0 0 16 14"><rect y="0" width="9" height="1.6" fill="#84807A"/><rect y="5" width="9" height="1.6" fill="#84807A"/><rect y="10" width="6" height="1.6" fill="#84807A"/><circle cx="12.4" cy="11.1" r="2.2" fill="#84807A"/></svg>
-                    </div>
-                  </div>
-                  <div class="app-search">
-                    <svg width="12" height="12" viewBox="0 0 14 14"><circle cx="5" cy="5" r="4.3" fill="none" stroke="#84807A" stroke-width="1.3"/><line x1="8" y1="8" x2="12" y2="12" stroke="#84807A" stroke-width="1.3"/></svg>
-                    <span>Buscar artista o canción</span>
-                  </div>
-                </div>
-                <div class="app-content">
-                  <p class="section-label">artistas recientes</p>
-                  <div class="artist-row">
-                    <div class="artist-chip"><span class="avatar avatar-teto"></span><em>Kasane Teto</em></div>
-                    <div class="artist-chip"><span class="avatar avatar-miku"></span><em>Hatsune Miku</em></div>
-                    <div class="artist-chip"><span class="avatar avatar-miloj"></span><em>Milo J</em></div>
-                  </div>
-                  <p class="section-label">canciones</p>
-                  <div class="song-list">
-                    <div class="song-row song-row--active">
-                      <span class="song-thumb thumb-1"></span>
-                      <span class="song-meta"><em>Niño</em><small>Milo J</small></span>
-                      <span class="song-time">4:31</span>
-                    </div>
-                    <div class="song-row">
-                      <span class="song-thumb thumb-2"></span>
-                      <span class="song-meta"><em>Roki</em><small>Hatsune Miku</small></span>
-                      <span class="song-time">3:49</span>
-                    </div>
-                    <div class="song-row">
-                      <span class="song-thumb thumb-3"></span>
-                      <span class="song-meta"><em>Brain Rot</em><small>Kasane Teto</small></span>
-                      <span class="song-time">2:58</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="mini-player">
-                  <div class="mini-progress"><span style="width:41%"></span></div>
-                  <div class="mini-row">
-                    <span class="mini-thumb"></span>
-                    <span class="mini-meta"><em>Niño</em><small>Milo J</small></span>
-                    <div class="mini-controls">
-                      <svg width="11" height="11" viewBox="0 0 12 12"><path d="M11,1 L11,11 L2,6 Z" fill="#84807A"/></svg>
-                      <svg width="13" height="13" viewBox="0 0 14 14"><rect x="2" y="2" width="3.4" height="10" fill="#EDEAE2"/><rect x="8.6" y="2" width="3.4" height="10" fill="#EDEAE2"/></svg>
-                      <svg width="11" height="11" viewBox="0 0 12 12"><path d="M1,1 L1,11 L10,6 Z" fill="#84807A"/></svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="phone-navbar"><span class="nav-pill"></span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <button type="button" class="car-arrow car-next" aria-label="Vista siguiente">
         <svg width="9" height="15" viewBox="0 0 9 15"><path d="M1,1 L8,7.5 L1,14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -533,7 +484,6 @@
       <div class="car-thumbs">
         <button type="button" class="car-thumb is-active" data-view="full">Pantalla completa</button>
         <button type="button" class="car-thumb" data-view="compact">Ventana compacta</button>
-        <button type="button" class="car-thumb" data-view="android">App Android</button>
       </div>
     </div>
   </section>
