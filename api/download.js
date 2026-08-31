@@ -1,17 +1,8 @@
-// Proxy de descarga: el visitante nunca ve el usuario/repo de GitHub.
-// Todo el pedido a GitHub pasa por acá, del lado del servidor.
-//
-// Usa el Edge Runtime + streaming para poder reenviar archivos grandes
-// (como el APK) sin chocar con el límite de 4.5 MB que tienen las
-// funciones serverless normales de Vercel al bufferear la respuesta.
 export const config = { runtime: 'edge' };
 
 const REPO_OWNER = 'jv8784815-ctrl';
 const REPO_NAME = 'repositpory-for-apk-3wfqewfd32134';
 
-// Windows y Android se publican en releases SEPARADAS (con distinto tag
-// cada una), así que buscamos, entre las últimas releases publicadas,
-// la más reciente que tenga un asset con la extensión de esta plataforma.
 const PLATFORM_EXT = {
   windows: '.exe',
   android: '.apk',
@@ -37,8 +28,7 @@ export default async function handler(req) {
     'User-Agent': 'frikimusic-site',
     'Accept': 'application/vnd.github+json',
   };
-  // Si el repo es privado de verdad, agregá un token en Vercel:
-  // Settings -> Environment Variables -> GITHUB_TOKEN (permiso "Contents: read")
+
   if (process.env.GITHUB_TOKEN) {
     ghHeaders.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
   }
@@ -51,9 +41,6 @@ export default async function handler(req) {
     if (!relRes.ok) throw new Error('releases fetch failed');
     const releases = await relRes.json();
 
-    // Recorremos de la más nueva a la más vieja (orden por defecto de GitHub)
-    // y nos quedamos con la primera que tenga el archivo de esta plataforma.
-    let asset = null;
     for (const release of releases) {
       if (release.draft) continue;
       const found = (release.assets || []).find(a => a.name.toLowerCase().endsWith(ext));
@@ -69,7 +56,6 @@ export default async function handler(req) {
     });
     if (!fileRes.ok || !fileRes.body) throw new Error('asset download failed');
 
-    // Reenviamos el body como stream, sin bufferearlo entero en memoria.
     return new Response(fileRes.body, {
       status: 200,
       headers: {
