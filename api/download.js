@@ -41,6 +41,11 @@ export default async function handler(req) {
     if (!relRes.ok) throw new Error('releases fetch failed');
     const releases = await relRes.json();
 
+    // Antes acá faltaba declarar `asset` (no había ni `let` ni `const`),
+    // así que la asignación de abajo tiraba ReferenceError en runtime y
+    // el catch de más abajo lo convertía siempre en un 502, sin importar
+    // si el asset existía o no.
+    let asset;
     for (const release of releases) {
       if (release.draft) continue;
       const found = (release.assets || []).find(a => a.name.toLowerCase().endsWith(ext));
