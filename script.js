@@ -123,6 +123,21 @@ wireDownload('downloadBtn', 'dlVersion', 'windows');
 wireDownload('downloadBtnAndroid', 'dlVersionAndroid', 'android');
 
 (function () {
+  const el = document.getElementById('downloadTotal');
+  if (!el) return;
+
+  fetch('/api/stats')
+    .then(r => r.json())
+    .then(({ total }) => {
+      if (typeof total === 'number') {
+        el.innerHTML = `<strong>${total.toLocaleString('es-AR')}</strong> descargas totales`;
+        el.hidden = false;
+      }
+    })
+    .catch(() => { /* si falla, se queda oculto */ });
+})();
+
+(function () {
   const deck = document.getElementById('cardDeck');
   const backdrop = document.getElementById('deckBackdrop');
   if (!deck || !backdrop) return;
