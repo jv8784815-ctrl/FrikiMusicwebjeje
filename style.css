@@ -654,6 +654,8 @@ h1, h2, h3{
 .dl-left p{ font-size: 13px; color: var(--text-dim); }
 .dl-right{ display: flex; align-items: center; gap: 16px; }
 .dl-version{ font-family: var(--mono); font-size: 11.5px; color: var(--text-faint); }
+.download-total{ margin-top: 14px; font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); }
+.download-total strong{ color: var(--accent); font-weight: 600; }
 .download-note{ text-align: center; margin-top: 22px; font-size: 12.5px; color: var(--text-faint); font-family: var(--mono); }
 
 .site-footer{ border-top: 1px solid var(--line-soft); padding: 32px; }
