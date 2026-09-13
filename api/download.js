@@ -13,6 +13,28 @@ const CONTENT_TYPE = {
   android: 'application/vnd.android.package-archive',
 };
 
+const DEVICE_COOKIE = 'fm_device';
+const DOWNLOADS_SET_KEY = 'fm_downloads';
+
+function getCookie(req, name) {
+  const header = req.headers.get('cookie') || '';
+  const match = header.match(new RegExp(`(?:^|;\\s*)${name}=([^;]+)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+async function registerDownload(deviceId) {
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) return;
+
+  try {
+    await fetch(`${url}/sadd/${DOWNLOADS_SET_KEY}/${encodeURIComponent(deviceId)}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  } catch (err) {
+  }
+}
+
 export default async function handler(req) {
   const url = new URL(req.url);
   const platform = (url.searchParams.get('platform') || 'windows').toLowerCase();
@@ -23,6 +45,12 @@ export default async function handler(req) {
       { status: 400 }
     );
   }
+
+  let deviceId = getCookie(req, DEVICE_COOKIE);
+  const isNewDevice = !deviceId;
+  if (!deviceId) deviceId = crypto.randomUUID();
+
+  await registerDownload(deviceId);
 
   const ghHeaders = {
     'User-Agent': 'frikimusic-site',
@@ -41,10 +69,6 @@ export default async function handler(req) {
     if (!relRes.ok) throw new Error('releases fetch failed');
     const releases = await relRes.json();
 
-    // Antes acá faltaba declarar `asset` (no había ni `let` ni `const`),
-    // así que la asignación de abajo tiraba ReferenceError en runtime y
-    // el catch de más abajo lo convertía siempre en un 502, sin importar
-    // si el asset existía o no.
     let asset;
     for (const release of releases) {
       if (release.draft) continue;
@@ -61,14 +85,17 @@ export default async function handler(req) {
     });
     if (!fileRes.ok || !fileRes.body) throw new Error('asset download failed');
 
-    return new Response(fileRes.body, {
-      status: 200,
-      headers: {
-        'Content-Type': CONTENT_TYPE[platform],
-        'Content-Disposition': `attachment; filename="${asset.name}"`,
-        'Cache-Control': 'no-store',
-      },
-    });
+    const headers = {
+      'Content-Type': CONTENT_TYPE[platform],
+      'Content-Disposition': `attachment; filename="${asset.name}"`,
+      'Cache-Control': 'no-store',
+    };
+
+    if (isNewDevice) {
+      headers['Set-Cookie'] = `${DEVICE_COOKIE}=${deviceId}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
+    }
+
+    return new Response(fileRes.body, { status: 200, headers });
   } catch (err) {
     return new Response(
       'No se pudo obtener el instalador. Probá de nuevo en unos minutos.',
