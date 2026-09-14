@@ -14,14 +14,12 @@
   var mobileNav = document.getElementById('mobileNav');
   navToggle.addEventListener('click', function () {
     var isOpen = mobileNav.classList.toggle('is-open');
-    mobileNav.hidden = !isOpen;
     navToggle.setAttribute('aria-expanded', String(isOpen));
     navToggle.querySelector('.material-symbols-rounded').textContent = isOpen ? 'close' : 'menu';
   });
   mobileNav.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
       mobileNav.classList.remove('is-open');
-      mobileNav.hidden = true;
       navToggle.setAttribute('aria-expanded', 'false');
       navToggle.querySelector('.material-symbols-rounded').textContent = 'menu';
     });
@@ -86,7 +84,7 @@
 })();
 
 (function () {
-  var WEB3FORMS_ACCESS_KEY = 'PON_AQUI_TU_ACCESS_KEY';
+  var WEB3FORMS_ACCESS_KEY = 'a7ad6f6e-c0dd-43a2-bacb-db0e33f5aa04';
 
   var overlay = document.getElementById('supportOverlay');
   var openTriggers = document.querySelectorAll('.js-open-support');
@@ -151,7 +149,7 @@
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    if (WEB3FORMS_ACCESS_KEY === 'a7ad6f6e-c0dd-43a2-bacb-db0e33f5aa04') {
+    if (WEB3FORMS_ACCESS_KEY === 'PON_AQUI_TU_ACCESS_KEY') {
       statusEl.textContent = 'Falta configurar la clave de envío del formulario.';
       statusEl.className = 'support-status is-error';
       return;
