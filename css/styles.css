@@ -273,20 +273,56 @@ img {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-toggle .material-symbols-rounded {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.nav-toggle[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--text-secondary);
+}
+
+.nav-toggle[aria-expanded="true"] .material-symbols-rounded {
+  transform: rotate(90deg);
 }
 
 .mobile-nav {
-  display: none;
+  display: flex;
   flex-direction: column;
-  padding: 8px 24px 20px;
-  background: rgba(0, 0, 0, 0.97);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 10px 24px 22px;
+  margin: 0;
+  background: rgba(10, 10, 14, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--outline-soft);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
 }
 
 .mobile-nav a {
-  padding: 12px 0;
+  padding: 12px 4px;
   border-bottom: 1px solid var(--outline-soft);
   color: var(--text-secondary);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.mobile-nav a:hover {
+  color: var(--text-primary);
 }
 
 .mobile-nav a:last-child {
@@ -294,8 +330,22 @@ img {
 }
 
 .mobile-nav.is-open {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
+
+.mobile-nav.is-open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-nav.is-open a:nth-child(1) { transition-delay: 0.03s; }
+.mobile-nav.is-open a:nth-child(2) { transition-delay: 0.06s; }
+.mobile-nav.is-open a:nth-child(3) { transition-delay: 0.09s; }
+.mobile-nav.is-open a:nth-child(4) { transition-delay: 0.12s; }
+.mobile-nav.is-open a:nth-child(5) { transition-delay: 0.15s; }
+.mobile-nav.is-open a:nth-child(6) { transition-delay: 0.18s; }
 
 .hero {
   position: relative;
