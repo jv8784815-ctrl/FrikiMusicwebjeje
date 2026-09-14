@@ -910,17 +910,17 @@ img {
 
   .hero-visual {
     min-height: 0;
-    order: -1;
   }
 
   .hero-visual-desktop {
-    display: none;
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    margin: 24px auto 0;
   }
 
   .hero-visual-mobile {
-    display: block;
-    width: 62%;
-    margin: 0 auto 8px;
+    display: none;
   }
 
   .feature-grid {
@@ -980,8 +980,8 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .hero-visual-mobile {
-    width: 78%;
+  .hero-visual-desktop {
+    max-width: 300px;
   }
 
   .download-row {
