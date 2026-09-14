@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrikiMusic — Tu música, con letra y a tu manera</title>
+<meta name="description" content="FrikiMusic es un reproductor de música para Android con letras traducidas y sincronizadas, streaming y descargas, color dinámico real y gestos naturales. Próximamente también para Windows, Linux y macOS.">
+
+<link rel="canonical" href="https://frikimusic.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FrikiMusic">
+<meta property="og:title" content="FrikiMusic — Tu música, con letra y a tu manera">
+<meta property="og:description" content="Reproductor de música para Android con letras traducidas y sincronizadas, streaming y descargas, color dinámico real y gestos naturales. Próximamente también para Windows, Linux y macOS.">
+<meta property="og:url" content="https://frikimusic.vercel.app/">
+<meta property="og:image" content="https://frikimusic.vercel.app/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FrikiMusic, reproductor de música para Android con letras sincronizadas">
+<meta property="og:locale" content="es_ES">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FrikiMusic — Tu música, con letra y a tu manera">
+<meta name="twitter:description" content="Reproductor de música para Android con letras traducidas y sincronizadas, streaming y descargas, color dinámico real. Próximamente también para Windows, Linux y macOS.">
+<meta name="twitter:image" content="https://frikimusic.vercel.app/assets/img/og-image.png">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..500,0..1,0" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FrikiMusic",
+  "alternateName": "Friki Music",
+  "url": "https://frikimusic.vercel.app/",
+  "applicationCategory": "MultimediaApplication",
+  "applicationSubCategory": "Music Player",
+  "operatingSystem": "Android 8.0+ (Windows, Linux y macOS próximamente)",
+  "description": "FrikiMusic es un reproductor de música gratuito para Android, con interfaz en Material 3, letras traducidas y sincronizadas línea a línea, streaming y descargas, color dinámico según la carátula del álbum, gestos naturales en el reproductor, estadísticas de escucha y sincronización con Spotify y YouTube Music. Próximamente también en versión de escritorio para Windows, Linux y macOS.",
+  "inLanguage": "es",
+  "image": "https://frikimusic.vercel.app/assets/img/og-image.png",
+  "screenshot": "https://frikimusic.vercel.app/assets/img/og-image.png",
+  "softwareVersion": "1.0.0",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Josexo",
+    "url": "https://github.com/jv8784815-ctrl"
+  },
+  "creator": {
+    "@type": "Person",
+    "name": "Josexo",
+    "url": "https://github.com/jv8784815-ctrl"
+  },
+  "featureList": [
+    "Letras traducidas y sincronizadas línea a línea",
+    "Color dinámico según la carátula del álbum",
+    "Streaming y descarga de canciones",
+    "Gestos naturales en el reproductor",
+    "Estadísticas de escucha",
+    "Sincronización con Spotify y YouTube Music",
+    "Presencia de reproducción en Discord",
+    "Versión de escritorio para Windows, Linux y macOS (próximamente)"
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header" id="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="FrikiMusic, inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/img/logo.png" alt="" width="20" height="20">
+      </span>
+      <span class="brand-name">FrikiMusic</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#caracteristicas">Características</a>
+      <a href="#interfaz">Interfaz</a>
+      <a href="#comunidad">Proyecto</a>
+      <a href="#descargas">Descargas</a>
+      <a href="#" class="js-open-support">Soporte</a>
+      <a href="https://github.com/jv8784815-ctrl" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="btn btn-primary btn-small" href="#descargas">
+        <span class="material-symbols-rounded" aria-hidden="true">download</span>
+        <span class="btn-label">Descargar</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menú">
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <a href="#caracteristicas">Características</a>
+    <a href="#interfaz">Interfaz</a>
+    <a href="#comunidad">Proyecto</a>
+    <a href="#descargas">Descargas</a>
+    <a href="#" class="js-open-support">Soporte</a>
+    <a href="https://github.com/jv8784815-ctrl" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="material-symbols-rounded" aria-hidden="true">android</span> Aplicación para Android</p>
+        <h1 class="hero-brand">FrikiMusic</h1>
+        <p class="hero-tagline">Reproductor de música gratis, con interfaz hecha con Material 3, para Android.</p>
+        <p class="hero-lead">
+          Letras traducidas y sincronizadas línea a línea, streaming y descargas,
+          y una interfaz que cambia de color según lo que estás escuchando.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#descargas">
+            <span class="material-symbols-rounded" aria-hidden="true">download</span>
+            Descargar APK
+          </a>
+          <a class="btn btn-ghost" href="#interfaz">
+            <span class="material-symbols-rounded" aria-hidden="true">play_circle</span>
+            Ver la interfaz
+          </a>
+        </div>
+        <p class="hero-meta"><span id="heroVersion">v1.0.0</span> · Android 8.0 o superior · Sin coste</p>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <picture>
+          <img class="hero-visual-desktop" src="assets/img/hero-mockup.webp" alt="" loading="eager" width="1648" height="1170">
+        </picture>
+        <picture>
+          <img class="hero-visual-mobile" src="assets/img/hero-mockup-mobile.webp" alt="" loading="eager" width="713" height="1479">
+        </picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="caracteristicas">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Hecho para escuchar mejor</h2>
+        <p>Ocho decisiones concretas de diseño, no una lista de adjetivos.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="feature-icon-badge" aria-hidden="true"><span class="material-symbols-rounded">translate</span></span>
+          <h3>Letras traducidas y sincronizadas</h3>
+          <p>Cada canción muestra su letra línea a línea, con la estrofa activa en primer plano y traducción sin salir del reproductor.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon-badge" aria-hidden="true"><span class="material-symbols-rounded">palette</span></span>
+          <h3>Color dinámico real</h3>
+          <p>La interfaz toma el color que más se repite en la carátula del álbum, no el tono más vivo, y lo calcula al instante.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon-badge" aria-hidden="true"><span class="material-symbols-rounded">cloud_download</span></span>
+          <h3>Streaming y descargas</h3>
+          <p>Reproduce o descarga canciones directamente, sin depender de una biblioteca local limitada.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon-badge" aria-hidden="true"><span class="material-symbols-rounded">swipe</span></span>
+          <h3>Gestos de reproductor</h3>
+          <p>Desliza hacia arriba para ver la letra, a los lados para cambiar de canción y hacia abajo para cerrar el reproductor.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon-badge" aria-hidden="true"><span class="material-symbols-rounded">group</span></span>
+          <h3>Presencia en Discord</h3>
+          <p>Comparte en tiempo real lo que estás escuchando con tu servidor, sin configuración adicional.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon-badge" aria-hidden="true"><span class="material-symbols-rounded">bar_chart</span></span>
+          <h3>Estadísticas de escucha</h3>
+          <p>Consulta qué artistas, álbumes y canciones dominan tu tiempo de reproducción.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon-badge" aria-hidden="true"><span class="material-symbols-rounded">sync_alt</span></span>
+          <h3>Spotify y YouTube Music</h3>
+          <p>Conecta ambas cuentas desde Ajustes para sincronizar tu biblioteca y tu actividad.</p>
+        </article>
+
+        <article class="feature-card">
+          <span class="feature-icon-badge" aria-hidden="true"><span class="material-symbols-rounded">bolt</span></span>
+          <h3>Material 3 de verdad</h3>
+          <p>Componentes, tipografía y movimiento siguiendo las guías de Material Design 3, sin plantillas genéricas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="showcase" id="interfaz">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>La interfaz</h2>
+        <p>Un vistazo real a las tres pantallas donde pasarás más tiempo.</p>
+      </div>
+
+      <div class="showcase-body">
+        <div class="showcase-panel">
+          <div class="showcase-tabs" role="tablist" aria-label="Pantallas de FrikiMusic">
+            <button class="showcase-tab is-active" role="tab" aria-selected="true" data-target="player">
+              <span class="showcase-tab-index">01</span>
+              <span>Reproductor inmersivo</span>
+            </button>
+            <button class="showcase-tab" role="tab" aria-selected="false" data-target="home">
+              <span class="showcase-tab-index">02</span>
+              <span>Inicio personalizado</span>
+            </button>
+            <button class="showcase-tab" role="tab" aria-selected="false" data-target="lyrics">
+              <span class="showcase-tab-index">03</span>
+              <span>Letras en vivo</span>
+            </button>
+            <button class="showcase-tab" role="tab" aria-selected="false" data-target="search">
+              <span class="showcase-tab-index">04</span>
+              <span>Búsqueda instantánea</span>
+            </button>
+            <button class="showcase-tab" role="tab" aria-selected="false" data-target="settings">
+              <span class="showcase-tab-index">05</span>
+              <span>Ajustes a tu gusto</span>
+            </button>
+            <button class="showcase-tab" role="tab" aria-selected="false" data-target="stats">
+              <span class="showcase-tab-index">06</span>
+              <span>Estadísticas de escucha</span>
+            </button>
+          </div>
+
+          <div class="showcase-desc">
+            <p data-desc="player" class="is-active">
+              Portada protagonista, controles amplios y un color de fondo que nace de la propia
+              carátula. La barra inferior usa un acabado líquido y discreto.
+            </p>
+            <p data-desc="home" hidden>
+              Reproducción reciente y recomendaciones ordenadas en filas simples, sin carruseles
+              innecesarios, con tus artistas más escuchados siempre a mano.
+            </p>
+            <p data-desc="lyrics" hidden>
+              La línea activa se distingue del resto por peso y contraste; las adyacentes se
+              atenúan con un desenfoque progresivo que sigue el ritmo de la canción.
+            </p>
+            <p data-desc="search" hidden>
+              Resultados agrupados por artistas, álbumes y canciones al instante, con pestañas
+              para filtrar y saltar directo a lo que buscas.
+            </p>
+            <p data-desc="settings" hidden>
+              Ícono de la app, cuentas conectadas y todo lo demás en un panel de ajustes claro,
+              sin menús escondidos ni pantallas de más.
+            </p>
+            <p data-desc="stats" hidden>
+              Reparto por artista, artista y canción favoritos, y tu actividad reciente,
+              todo de un vistazo en tu propia pantalla de estadísticas.
+            </p>
+          </div>
+
+          <div class="showcase-nav">
+            <button class="showcase-arrow" id="showcasePrev" aria-label="Pantalla anterior">
+              <span class="material-symbols-rounded" aria-hidden="true">chevron_left</span>
+            </button>
+            <button class="showcase-arrow" id="showcaseNext" aria-label="Pantalla siguiente">
+              <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="showcase-stage">
+          <img data-screen="player" class="showcase-img is-active" src="assets/img/screen-player.webp" alt="Pantalla del reproductor de FrikiMusic mostrando la canción Termonuclear" width="522" height="1087" loading="lazy">
+          <img data-screen="home" class="showcase-img" src="assets/img/screen-home.webp" alt="Pantalla de inicio de FrikiMusic con reproducción reciente y recomendaciones" width="522" height="1087" loading="lazy" hidden>
+          <img data-screen="lyrics" class="showcase-img" src="assets/img/screen-lyrics.webp" alt="Pantalla de letras sincronizadas de FrikiMusic con la línea activa resaltada" width="522" height="1087" loading="lazy" hidden>
+          <img data-screen="search" class="showcase-img" src="assets/img/screen-search.webp" alt="Pantalla de búsqueda de FrikiMusic con artistas, álbumes y canciones" width="522" height="1087" loading="lazy" hidden>
+          <img data-screen="settings" class="showcase-img" src="assets/img/screen-settings.webp" alt="Pantalla de ajustes de FrikiMusic con ícono de la app, versión y cuentas" width="522" height="1087" loading="lazy" hidden>
+          <img data-screen="stats" class="showcase-img" src="assets/img/screen-stats.webp" alt="Pantalla de estadísticas de FrikiMusic con reparto por artista y actividad reciente" width="522" height="1087" loading="lazy" hidden>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community" id="comunidad">
+    <div class="wrap community-inner">
+      <div class="community-copy">
+        <p class="eyebrow"><span class="material-symbols-rounded" aria-hidden="true">code</span> En desarrollo activo</p>
+        <h2>Proyecto propio, 100% gratuito y sin publicidad para el público.</h2>
+        <div class="community-actions">
+          <span class="badge-soon">
+            <span class="material-symbols-rounded" aria-hidden="true">code</span>
+            Open Source próximamente
+          </span>
+          <a class="btn btn-ghost" href="https://github.com/jv8784815-ctrl" target="_blank" rel="noopener">
+            <span class="material-symbols-rounded" aria-hidden="true">person</span>
+            Perfil de GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="dev-card">
+        <img class="dev-avatar" src="https://github.com/jv8784815-ctrl.png?size=200" alt="Foto de perfil de Josexo en GitHub" width="52" height="52" loading="lazy">
+        <div class="dev-info">
+          <p class="dev-name">Josexo</p>
+          <p class="dev-role">Desarrollador de FrikiMusic</p>
+        </div>
+        <div class="dev-stat">
+          <span class="dev-stat-label">Estado</span>
+          <span class="dev-stat-value"><span class="status-dot" aria-hidden="true"></span> Desarrollo activo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="downloads" id="descargas">
+    <div class="wrap">
+      <div class="help-card">
+        <span class="material-symbols-rounded help-icon" aria-hidden="true">support_agent</span>
+        <div class="help-copy">
+          <h3>¿Tienes una idea o un problema?</h3>
+          <p>Escríbeme tu comentario, idea o problema.</p>
+        </div>
+        <a href="#" class="btn btn-primary js-open-support">
+          <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+          Escribir mensaje
+        </a>
+      </div>
+
+      <div class="section-head">
+        <h2>Descargas</h2>
+        <p>La última versión estable, lista para instalar.</p>
+      </div>
+
+      <div class="download-grid">
+        <div class="download-card">
+          <div class="download-head">
+            <span class="material-symbols-rounded download-icon" aria-hidden="true">android</span>
+            <div>
+              <h3>Android</h3>
+              <p>Paquete de instalación directa (APK), fuera de Google Play.</p>
+            </div>
+          </div>
+
+          <div class="download-details">
+            <div class="download-row">
+              <div class="download-meta">
+                <span><span class="material-symbols-rounded" aria-hidden="true">new_releases</span> <span id="dlVersion">Cargando versión…</span></span>
+                <span><span class="material-symbols-rounded" aria-hidden="true">sd_card</span> <span id="dlSize">—</span></span>
+                <span><span class="material-symbols-rounded" aria-hidden="true">event</span> <span id="dlDate">—</span></span>
+              </div>
+              <a class="btn btn-primary" id="dlButton" href="https://github.com/jv8784815-ctrl/repositpory-for-apk-3wfqewfd32134/releases/latest" target="_blank" rel="noopener">
+                <span class="material-symbols-rounded" aria-hidden="true">download</span>
+                Descargar APK
+              </a>
+            </div>
+          </div>
+
+          <div class="download-total">
+            <span class="material-symbols-rounded" aria-hidden="true">download_done</span>
+            <div class="download-total-copy">
+              <span class="download-total-value" id="dlTotal">—</span>
+              <span class="download-total-label">Descargas totales</span>
+            </div>
+          </div>
+
+          <p class="download-req">Requiere Android 8.0 o superior.</p>
+        </div>
+
+        <div class="download-card download-card-soon">
+          <div class="download-head">
+            <span class="material-symbols-rounded download-icon" aria-hidden="true">desktop_windows</span>
+            <div>
+              <h3>PC</h3>
+              <p>Versión de escritorio para Windows.</p>
+            </div>
+          </div>
+
+          <div class="download-soon">
+            <span class="material-symbols-rounded" aria-hidden="true">construction</span>
+            En desarrollo · Próximamente
+          </div>
+        </div>
+
+        <div class="download-card download-card-soon">
+          <div class="download-head">
+            <span class="material-symbols-rounded download-icon" aria-hidden="true">terminal</span>
+            <div>
+              <h3>Linux</h3>
+              <p>Versión de escritorio para distribuciones Linux.</p>
+            </div>
+          </div>
+
+          <div class="download-soon">
+            <span class="material-symbols-rounded" aria-hidden="true">construction</span>
+            En desarrollo · Próximamente
+          </div>
+        </div>
+
+        <div class="download-card download-card-soon">
+          <div class="download-head">
+            <span class="material-symbols-rounded download-icon" aria-hidden="true">laptop_mac</span>
+            <div>
+              <h3>macOS</h3>
+              <p>Versión de escritorio para Mac.</p>
+            </div>
+          </div>
+
+          <div class="download-soon">
+            <span class="material-symbols-rounded" aria-hidden="true">construction</span>
+            En desarrollo · Próximamente
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="assets/img/logo.png" alt="" width="20" height="20">
+      </span>
+      <span>FrikiMusic</span>
+    </div>
+
+    <nav class="footer-links" aria-label="Enlaces del pie de página">
+      <a href="https://github.com/jv8784815-ctrl" target="_blank" rel="noopener">GitHub</a>
+      <a href="#descargas">Descargas</a>
+      <a href="https://github.com/jv8784815-ctrl/repositpory-for-apk-3wfqewfd32134/releases" target="_blank" rel="noopener">Registro de cambios</a>
+      <a href="#" class="js-open-support">Soporte</a>
+      <a href="terminos.html">Términos</a>
+      <a href="privacidad.html">Privacidad</a>
+    </nav>
+
+    <p class="footer-copy">© 2026 FrikiMusic. Proyecto independiente para Android.</p>
+  </div>
+</footer>
+
+<div class="support-overlay" id="supportOverlay" hidden>
+  <div class="support-modal" role="dialog" aria-modal="true" aria-labelledby="supportTitle">
+    <div class="support-head">
+      <div>
+        <p class="support-eyebrow"><span class="material-symbols-rounded" aria-hidden="true">forum</span> Contacto directo</p>
+        <h3 id="supportTitle">Enviar comentario</h3>
+      </div>
+      <button class="support-close" id="supportClose" aria-label="Cerrar">
+        <span class="material-symbols-rounded" aria-hidden="true">close</span>
+      </button>
+    </div>
+
+    <form id="supportForm" class="support-form">
+      <div class="support-kind" role="radiogroup" aria-label="Tipo de mensaje">
+        <button type="button" class="support-kind-btn is-active" data-kind="Comentario" role="radio" aria-checked="true">
+          <span class="material-symbols-rounded" aria-hidden="true">chat_bubble</span>
+          <span class="support-kind-label">Comentario</span>
+        </button>
+        <button type="button" class="support-kind-btn" data-kind="Solicitud de cambios o peticiones" role="radio" aria-checked="false">
+          <span class="material-symbols-rounded" aria-hidden="true">lightbulb</span>
+          <span class="support-kind-label">Peticiones</span>
+        </button>
+        <button type="button" class="support-kind-btn" data-kind="Reporte de errores" role="radio" aria-checked="false">
+          <span class="material-symbols-rounded" aria-hidden="true">bug_report</span>
+          <span class="support-kind-label">Reporte</span>
+        </button>
+      </div>
+      <input type="hidden" name="kind" id="supportKind" value="Comentario">
+
+      <label class="support-field">
+        <span>Tu nombre</span>
+        <input type="text" name="name" placeholder="¿Cómo te llamas?" required>
+      </label>
+
+      <label class="support-field">
+        <span>Mensaje</span>
+        <textarea name="message" rows="4" placeholder="Cuéntame los detalles…" required></textarea>
+      </label>
+
+      <label class="support-field">
+        <span>Tu correo <em>(opcional, para responderte)</em></span>
+        <input type="email" name="email" placeholder="tucorreo@ejemplo.com">
+      </label>
+
+      <button type="submit" class="btn btn-primary support-submit" id="supportSubmit">
+        <span class="material-symbols-rounded" aria-hidden="true">send</span>
+        <span>Enviar</span>
+      </button>
+
+      <p class="support-status" id="supportStatus" role="status"></p>
+    </form>
+
+    <div class="support-info">
+      <div class="support-info-item">
+        <span class="material-symbols-rounded" aria-hidden="true">verified_user</span>
+        <div>
+          <p class="support-info-title">Privacidad Asegurada</p>
+          <p class="support-info-text">Tus datos están protegidos y solo se usarán para contactarte sobre tu reporte.</p>
+        </div>
+      </div>
+      <div class="support-info-item">
+        <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+        <div>
+          <p class="support-info-title">Tiempo de Respuesta</p>
+          <p class="support-info-text">Normalmente respondo en más de 24 horas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

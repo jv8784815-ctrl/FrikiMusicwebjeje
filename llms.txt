@@ -1,0 +1,25 @@
+# FrikiMusic
+
+> Reproductor de música gratuito para Android, hecho por un solo desarrollador, con letras traducidas y sincronizadas línea a línea, streaming y descargas, color dinámico real y gestos naturales.
+
+FrikiMusic es una aplicación para Android (fuera de Google Play, se instala vía APK) centrada en la experiencia de escuchar música con letra. Requiere Android 8.0 o superior y no tiene coste. Es un proyecto independiente desarrollado por una sola persona (Josexo), no por un equipo o una empresa.
+
+## Funciones principales
+
+- Letras traducidas y sincronizadas línea a línea, con la estrofa activa resaltada y traducción sin salir del reproductor.
+- Color dinámico real: la interfaz toma el color que más se repite en la carátula del álbum.
+- Streaming y descarga de canciones, sin depender de una biblioteca local limitada.
+- Gestos en el reproductor: deslizar hacia arriba para ver la letra, a los lados para cambiar de canción, hacia abajo para cerrar.
+- Estadísticas de escucha: artistas, álbumes y canciones que más se repiten.
+- Sincronización con cuentas de Spotify y YouTube Music.
+- Presencia de reproducción en Discord (muestra en tiempo real lo que se está escuchando).
+- Interfaz siguiendo las guías de Material Design 3.
+
+## Estado del proyecto
+
+En desarrollo activo. La versión de PC (Windows) todavía no existe, está marcada como "en desarrollo, próximamente" en la web. El código de la web es de código abierto próximamente; por ahora no está publicado.
+
+## Enlaces
+
+- Descargar el APK (última versión): https://github.com/jv8784815-ctrl/repositpory-for-apk-3wfqewfd32134/releases/latest
+- Perfil de GitHub del desarrollador: https://github.com/jv8784815-ctrl
