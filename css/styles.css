@@ -1011,15 +1011,14 @@ img {
   }
 
   .hero-visual-desktop {
-    display: none;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    display: block;
   }
 
   .hero-visual-mobile {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 10px;
-    margin: 0 auto 8px;
+    display: none;
   }
 
   .feature-grid {
