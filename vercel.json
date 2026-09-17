@@ -16,12 +16,12 @@
   ],
   "rewrites": [
     {
-      "source": "/privacy",
-      "destination": "/privacy.html"
+      "source": "/privacidad",
+      "destination": "/privacidad.html"
     },
     {
-      "source": "/terms",
-      "destination": "/terms.html"
+      "source": "/terminos",
+      "destination": "/terminos.html"
     }
   ]
 }

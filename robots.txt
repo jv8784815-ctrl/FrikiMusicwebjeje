@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://frikimusic.vercel.app/sitemap.xml
+Sitemap: https://frikimusic.org/sitemap.xml
