@@ -4,6 +4,10 @@ function isApk(asset) {
   return /\.apk$/i.test(asset.name || '');
 }
 
+function isWindows(asset) {
+  return /\.(exe|msi)$/i.test(asset.name || '');
+}
+
 async function fetchAllReleases(headers) {
   var releases = [];
   var page = 1;
@@ -40,9 +44,17 @@ module.exports = async function handler(req, res) {
     var totalDownloads = 0;
     var latestRelease = null;
     var latestAsset = null;
+    var win = { release: null, asset: null, total: 0 };
 
     releases.forEach(function (release) {
       (release.assets || []).forEach(function (asset) {
+        if (isWindows(asset)) {
+          win.total += asset.download_count || 0;
+          if (!win.release) {
+            win.release = release;
+            win.asset = asset;
+          }
+        }
         if (isApk(asset)) {
           totalDownloads += asset.download_count || 0;
           if (!latestRelease) {
@@ -58,7 +70,14 @@ module.exports = async function handler(req, res) {
       size: latestAsset ? latestAsset.size : null,
       publishedAt: latestRelease ? (latestRelease.published_at || latestRelease.created_at || null) : null,
       downloadUrl: latestAsset ? latestAsset.browser_download_url : null,
-      totalDownloads: totalDownloads
+      totalDownloads: totalDownloads,
+      windows: {
+        version: win.release ? (win.release.tag_name || win.release.name || null) : null,
+        size: win.asset ? win.asset.size : null,
+        publishedAt: win.release ? (win.release.published_at || win.release.created_at || null) : null,
+        downloadUrl: win.asset ? win.asset.browser_download_url : null,
+        totalDownloads: win.total
+      }
     };
 
     res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=3600');

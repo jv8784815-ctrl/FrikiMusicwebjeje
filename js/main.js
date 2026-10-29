@@ -167,6 +167,16 @@
     return /\.apk$/i.test(asset.name || '');
   }
 
+  function isWindows(asset) {
+    return /\.(exe|msi)$/i.test(asset.name || '');
+  }
+
+  var pcVersionEl = document.getElementById('pcVersion');
+  var pcSizeEl = document.getElementById('pcSize');
+  var pcDateEl = document.getElementById('pcDate');
+  var pcTotalEl = document.getElementById('pcTotal');
+  var pcButtonEl = document.getElementById('pcButton');
+
   function formatSize(bytes) {
     if (!bytes && bytes !== 0) return '—';
     var mb = bytes / (1024 * 1024);
@@ -213,6 +223,19 @@
     if (dateEl) dateEl.textContent = formatDate(data.publishedAt);
     if (totalEl) totalEl.textContent = formatCount(data.totalDownloads || 0);
     applyDirectDownload(data.downloadUrl);
+    renderWindows(data.windows || {});
+  }
+
+  function renderWindows(w) {
+    if (pcVersionEl) pcVersionEl.textContent = w.version || 'Ver en GitHub';
+    if (pcSizeEl) pcSizeEl.textContent = formatSize(w.size);
+    if (pcDateEl) pcDateEl.textContent = formatDate(w.publishedAt);
+    if (pcTotalEl) pcTotalEl.textContent = formatCount(w.totalDownloads || 0);
+    if (pcButtonEl && w.downloadUrl) {
+      pcButtonEl.href = w.downloadUrl;
+      pcButtonEl.removeAttribute('target');
+      pcButtonEl.removeAttribute('rel');
+    }
   }
 
   function fetchAllReleasesFromGithub() {
@@ -242,9 +265,17 @@
         var totalDownloads = 0;
         var latestRelease = null;
         var latestAsset = null;
+        var win = { release: null, asset: null, total: 0 };
 
         releases.forEach(function (release) {
           (release.assets || []).forEach(function (asset) {
+            if (isWindows(asset)) {
+              win.total += asset.download_count || 0;
+              if (!win.release) {
+                win.release = release;
+                win.asset = asset;
+              }
+            }
             if (isApk(asset)) {
               totalDownloads += asset.download_count || 0;
               if (!latestRelease) {
@@ -260,7 +291,14 @@
           size: latestAsset ? latestAsset.size : null,
           publishedAt: latestRelease ? (latestRelease.published_at || latestRelease.created_at || null) : null,
           downloadUrl: latestAsset ? latestAsset.browser_download_url : null,
-          totalDownloads: totalDownloads
+          totalDownloads: totalDownloads,
+          windows: {
+            version: win.release ? (win.release.tag_name || win.release.name || null) : null,
+            size: win.asset ? win.asset.size : null,
+            publishedAt: win.release ? (win.release.published_at || win.release.created_at || null) : null,
+            downloadUrl: win.asset ? win.asset.browser_download_url : null,
+            totalDownloads: win.total
+          }
         });
       })
       .catch(function () {
@@ -269,6 +307,7 @@
         if (sizeEl) sizeEl.textContent = '—';
         if (dateEl) dateEl.textContent = '—';
         if (totalEl) totalEl.textContent = '—';
+        renderWindows({});
       });
   }
 
