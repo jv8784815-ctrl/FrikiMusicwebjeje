@@ -32,54 +32,6 @@
 })();
 
 (function () {
-  var order = ['player', 'home', 'lyrics', 'search', 'settings', 'stats'];
-  var tabs = document.querySelectorAll('.showcase-tab');
-  var descs = document.querySelectorAll('.showcase-desc p');
-  var imgs = document.querySelectorAll('.showcase-img');
-  var current = 0;
-
-  function activate(index) {
-    current = (index + order.length) % order.length;
-    var target = order[current];
-
-    tabs.forEach(function (tab) {
-      var isMatch = tab.getAttribute('data-target') === target;
-      tab.classList.toggle('is-active', isMatch);
-      tab.setAttribute('aria-selected', String(isMatch));
-    });
-
-    descs.forEach(function (desc) {
-      var isMatch = desc.getAttribute('data-desc') === target;
-      desc.hidden = !isMatch;
-      desc.classList.toggle('is-active', isMatch);
-    });
-
-    imgs.forEach(function (img) {
-      var isMatch = img.getAttribute('data-screen') === target;
-      img.hidden = !isMatch;
-      img.classList.toggle('is-active', isMatch);
-    });
-  }
-
-  tabs.forEach(function (tab, index) {
-    tab.addEventListener('click', function () {
-      activate(index);
-    });
-  });
-
-  var prevBtn = document.getElementById('showcasePrev');
-  var nextBtn = document.getElementById('showcaseNext');
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', function () {
-      activate(current - 1);
-    });
-    nextBtn.addEventListener('click', function () {
-      activate(current + 1);
-    });
-  }
-})();
-
-(function () {
   var placeholders = document.querySelectorAll('[data-download-placeholder]');
   placeholders.forEach(function (link) {
     link.addEventListener('click', function (event) {
@@ -211,8 +163,20 @@
   var totalEl = document.getElementById('dlTotal');
   var buttonEl = document.getElementById('dlButton');
 
+  var winVersionEl = document.getElementById('winVersion');
+  var winSizeEl = document.getElementById('winSize');
+  var winDateEl = document.getElementById('winDate');
+  var winTotalEl = document.getElementById('winTotal');
+  var winButtonEl = document.getElementById('winButton');
+  var pcButtonEl = document.getElementById('pcDlButton');
+  var pcTotalEl = document.getElementById('pcDlTotal');
+
   function isApk(asset) {
     return /\.apk$/i.test(asset.name || '');
+  }
+
+  function isExe(asset) {
+    return /\.exe$/i.test(asset.name || '');
   }
 
   function formatSize(bytes) {
@@ -247,11 +211,11 @@
     return /^v/i.test(v) ? v : 'v' + v;
   }
 
-  function applyDirectDownload(url) {
-    if (!buttonEl || !url) return;
-    buttonEl.href = url;
-    buttonEl.removeAttribute('target');
-    buttonEl.removeAttribute('rel');
+  function applyDirectDownload(el, url) {
+    if (!el || !url) return;
+    el.href = url;
+    el.removeAttribute('target');
+    el.removeAttribute('rel');
   }
 
   function renderInfo(data) {
@@ -260,7 +224,25 @@
     if (sizeEl) sizeEl.textContent = formatSize(data.size);
     if (dateEl) dateEl.textContent = formatDate(data.publishedAt);
     if (totalEl) totalEl.textContent = formatCount(data.totalDownloads || 0);
-    applyDirectDownload(data.downloadUrl);
+    applyDirectDownload(buttonEl, data.downloadUrl);
+  }
+
+  function renderWindows(data) {
+    if (winVersionEl) winVersionEl.textContent = data.version || 'Sin versión publicada';
+    if (winSizeEl) winSizeEl.textContent = formatSize(data.size);
+    if (winDateEl) winDateEl.textContent = formatDate(data.publishedAt);
+    if (winTotalEl) winTotalEl.textContent = formatCount(data.totalDownloads || 0);
+    if (pcTotalEl) pcTotalEl.textContent = formatCount(data.totalDownloads || 0);
+    applyDirectDownload(winButtonEl, data.downloadUrl);
+    applyDirectDownload(pcButtonEl, data.downloadUrl);
+  }
+
+  function renderWindowsError() {
+    if (winVersionEl) winVersionEl.textContent = 'No disponible';
+    if (winSizeEl) winSizeEl.textContent = '—';
+    if (winDateEl) winDateEl.textContent = '—';
+    if (winTotalEl) winTotalEl.textContent = '—';
+    if (pcTotalEl) pcTotalEl.textContent = '—';
   }
 
   function fetchAllReleasesFromGithub() {
@@ -284,39 +266,48 @@
     return fetchPage(1);
   }
 
-  function fetchFallback() {
+  function summarize(releases, matcher) {
+    var total = 0;
+    var latestRelease = null;
+    var latestAsset = null;
+
+    releases.forEach(function (release) {
+      (release.assets || []).forEach(function (asset) {
+        if (matcher(asset)) {
+          total += asset.download_count || 0;
+          if (!latestRelease) {
+            latestRelease = release;
+            latestAsset = asset;
+          }
+        }
+      });
+    });
+
+    return {
+      version: latestRelease ? (latestRelease.tag_name || latestRelease.name || null) : null,
+      size: latestAsset ? latestAsset.size : null,
+      publishedAt: latestRelease ? (latestRelease.published_at || latestRelease.created_at || null) : null,
+      downloadUrl: latestAsset ? latestAsset.browser_download_url : null,
+      totalDownloads: total
+    };
+  }
+
+  // onlyWindows: la API ya respondió con Android; solo falta Windows
+  function fetchFallback(onlyWindows) {
     fetchAllReleasesFromGithub()
       .then(function (releases) {
-        var totalDownloads = 0;
-        var latestRelease = null;
-        var latestAsset = null;
-
-        releases.forEach(function (release) {
-          (release.assets || []).forEach(function (asset) {
-            if (isApk(asset)) {
-              totalDownloads += asset.download_count || 0;
-              if (!latestRelease) {
-                latestRelease = release;
-                latestAsset = asset;
-              }
-            }
-          });
-        });
-
-        renderInfo({
-          version: latestRelease ? (latestRelease.tag_name || latestRelease.name || null) : null,
-          size: latestAsset ? latestAsset.size : null,
-          publishedAt: latestRelease ? (latestRelease.published_at || latestRelease.created_at || null) : null,
-          downloadUrl: latestAsset ? latestAsset.browser_download_url : null,
-          totalDownloads: totalDownloads
-        });
+        if (!onlyWindows) renderInfo(summarize(releases, isApk));
+        renderWindows(summarize(releases, isExe));
       })
       .catch(function () {
-        if (versionEl) versionEl.textContent = 'No disponible';
-        if (heroVersionEl) heroVersionEl.textContent = 'v1.0.0';
-        if (sizeEl) sizeEl.textContent = '—';
-        if (dateEl) dateEl.textContent = '—';
-        if (totalEl) totalEl.textContent = '—';
+        if (!onlyWindows) {
+          if (versionEl) versionEl.textContent = 'No disponible';
+          if (heroVersionEl) heroVersionEl.textContent = 'v1.0.0';
+          if (sizeEl) sizeEl.textContent = '—';
+          if (dateEl) dateEl.textContent = '—';
+          if (totalEl) totalEl.textContent = '—';
+        }
+        renderWindowsError();
       });
   }
 
@@ -325,6 +316,47 @@
       if (!res.ok) throw new Error('API ' + res.status);
       return res.json();
     })
-    .then(renderInfo)
-    .catch(fetchFallback);
+    .then(function (data) {
+      renderInfo(data);
+      if (data.windows) renderWindows(data.windows);
+      else fetchFallback(true);
+    })
+    .catch(function () { fetchFallback(false); });
+})();
+
+(function () {
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  var modes = ['auto', 'light', 'dark'];
+  var icons = { auto: 'brightness_auto', light: 'light_mode', dark: 'dark_mode' };
+  var names = { auto: 'automático', light: 'claro', dark: 'oscuro' };
+  var mode = root.getAttribute('data-theme') || 'auto';
+  function apply() {
+    if (mode === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', mode);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    var light = mode === 'light' || (mode === 'auto' && window.matchMedia('(prefers-color-scheme: light)').matches);
+    if (meta) meta.setAttribute('content', light ? '#f9f9ff' : '#111318');
+    btn.querySelector('.material-symbols-rounded').textContent = icons[mode];
+    btn.setAttribute('aria-label', 'Tema: ' + names[mode]);
+    btn.title = 'Tema: ' + names[mode];
+  }
+  btn.addEventListener('click', function () {
+    mode = modes[(modes.indexOf(mode) + 1) % modes.length];
+    try { if (mode === 'auto') localStorage.removeItem('fm-theme'); else localStorage.setItem('fm-theme', mode); } catch (e) {}
+    apply();
+  });
+  apply();
+})();
+
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.main-nav a[href^="#"]')).filter(function (a) { return a.getAttribute('href').length > 1; });
+  var map = links.map(function (a) { return { a: a, el: document.querySelector(a.getAttribute('href')) }; }).filter(function (x) { return x.el; });
+  function spy() {
+    var y = window.scrollY + 120, cur = null;
+    map.forEach(function (x) { if (x.el.getBoundingClientRect().top + window.scrollY <= y) cur = x; });
+    links.forEach(function (a) { a.classList.toggle('is-active', !!cur && cur.a === a); });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
 })();
