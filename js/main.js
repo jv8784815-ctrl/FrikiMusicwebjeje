@@ -163,20 +163,8 @@
   var totalEl = document.getElementById('dlTotal');
   var buttonEl = document.getElementById('dlButton');
 
-  var winVersionEl = document.getElementById('winVersion');
-  var winSizeEl = document.getElementById('winSize');
-  var winDateEl = document.getElementById('winDate');
-  var winTotalEl = document.getElementById('winTotal');
-  var winButtonEl = document.getElementById('winButton');
-  var pcButtonEl = document.getElementById('pcDlButton');
-  var pcTotalEl = document.getElementById('pcDlTotal');
-
   function isApk(asset) {
     return /\.apk$/i.test(asset.name || '');
-  }
-
-  function isExe(asset) {
-    return /\.exe$/i.test(asset.name || '');
   }
 
   function formatSize(bytes) {
@@ -211,11 +199,11 @@
     return /^v/i.test(v) ? v : 'v' + v;
   }
 
-  function applyDirectDownload(el, url) {
-    if (!el || !url) return;
-    el.href = url;
-    el.removeAttribute('target');
-    el.removeAttribute('rel');
+  function applyDirectDownload(url) {
+    if (!buttonEl || !url) return;
+    buttonEl.href = url;
+    buttonEl.removeAttribute('target');
+    buttonEl.removeAttribute('rel');
   }
 
   function renderInfo(data) {
@@ -224,25 +212,7 @@
     if (sizeEl) sizeEl.textContent = formatSize(data.size);
     if (dateEl) dateEl.textContent = formatDate(data.publishedAt);
     if (totalEl) totalEl.textContent = formatCount(data.totalDownloads || 0);
-    applyDirectDownload(buttonEl, data.downloadUrl);
-  }
-
-  function renderWindows(data) {
-    if (winVersionEl) winVersionEl.textContent = data.version || 'Sin versión publicada';
-    if (winSizeEl) winSizeEl.textContent = formatSize(data.size);
-    if (winDateEl) winDateEl.textContent = formatDate(data.publishedAt);
-    if (winTotalEl) winTotalEl.textContent = formatCount(data.totalDownloads || 0);
-    if (pcTotalEl) pcTotalEl.textContent = formatCount(data.totalDownloads || 0);
-    applyDirectDownload(winButtonEl, data.downloadUrl);
-    applyDirectDownload(pcButtonEl, data.downloadUrl);
-  }
-
-  function renderWindowsError() {
-    if (winVersionEl) winVersionEl.textContent = 'No disponible';
-    if (winSizeEl) winSizeEl.textContent = '—';
-    if (winDateEl) winDateEl.textContent = '—';
-    if (winTotalEl) winTotalEl.textContent = '—';
-    if (pcTotalEl) pcTotalEl.textContent = '—';
+    applyDirectDownload(data.downloadUrl);
   }
 
   function fetchAllReleasesFromGithub() {
@@ -266,48 +236,39 @@
     return fetchPage(1);
   }
 
-  function summarize(releases, matcher) {
-    var total = 0;
-    var latestRelease = null;
-    var latestAsset = null;
-
-    releases.forEach(function (release) {
-      (release.assets || []).forEach(function (asset) {
-        if (matcher(asset)) {
-          total += asset.download_count || 0;
-          if (!latestRelease) {
-            latestRelease = release;
-            latestAsset = asset;
-          }
-        }
-      });
-    });
-
-    return {
-      version: latestRelease ? (latestRelease.tag_name || latestRelease.name || null) : null,
-      size: latestAsset ? latestAsset.size : null,
-      publishedAt: latestRelease ? (latestRelease.published_at || latestRelease.created_at || null) : null,
-      downloadUrl: latestAsset ? latestAsset.browser_download_url : null,
-      totalDownloads: total
-    };
-  }
-
-  // onlyWindows: la API ya respondió con Android; solo falta Windows
-  function fetchFallback(onlyWindows) {
+  function fetchFallback() {
     fetchAllReleasesFromGithub()
       .then(function (releases) {
-        if (!onlyWindows) renderInfo(summarize(releases, isApk));
-        renderWindows(summarize(releases, isExe));
+        var totalDownloads = 0;
+        var latestRelease = null;
+        var latestAsset = null;
+
+        releases.forEach(function (release) {
+          (release.assets || []).forEach(function (asset) {
+            if (isApk(asset)) {
+              totalDownloads += asset.download_count || 0;
+              if (!latestRelease) {
+                latestRelease = release;
+                latestAsset = asset;
+              }
+            }
+          });
+        });
+
+        renderInfo({
+          version: latestRelease ? (latestRelease.tag_name || latestRelease.name || null) : null,
+          size: latestAsset ? latestAsset.size : null,
+          publishedAt: latestRelease ? (latestRelease.published_at || latestRelease.created_at || null) : null,
+          downloadUrl: latestAsset ? latestAsset.browser_download_url : null,
+          totalDownloads: totalDownloads
+        });
       })
       .catch(function () {
-        if (!onlyWindows) {
-          if (versionEl) versionEl.textContent = 'No disponible';
-          if (heroVersionEl) heroVersionEl.textContent = 'v1.0.0';
-          if (sizeEl) sizeEl.textContent = '—';
-          if (dateEl) dateEl.textContent = '—';
-          if (totalEl) totalEl.textContent = '—';
-        }
-        renderWindowsError();
+        if (versionEl) versionEl.textContent = 'No disponible';
+        if (heroVersionEl) heroVersionEl.textContent = 'v1.0.0';
+        if (sizeEl) sizeEl.textContent = '—';
+        if (dateEl) dateEl.textContent = '—';
+        if (totalEl) totalEl.textContent = '—';
       });
   }
 
@@ -316,12 +277,8 @@
       if (!res.ok) throw new Error('API ' + res.status);
       return res.json();
     })
-    .then(function (data) {
-      renderInfo(data);
-      if (data.windows) renderWindows(data.windows);
-      else fetchFallback(true);
-    })
-    .catch(function () { fetchFallback(false); });
+    .then(renderInfo)
+    .catch(fetchFallback);
 })();
 
 (function () {

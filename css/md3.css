@@ -52,7 +52,7 @@ h1, h2, h3 { font-weight: 400; letter-spacing: 0; }
   transition: background .2s var(--md-ease), box-shadow .2s var(--md-ease); }
 .site-header.is-scrolled { background: var(--md-surface-container); border-bottom-color: transparent; box-shadow: var(--shadow-1); }
 .brand-name { font: 500 1.375rem var(--font-display); }
-.brand-mark { border-radius: 12px; }
+.brand-mark { border-radius: 22.4%; }
 .main-nav a { padding: 10px 16px; border-radius: 999px; font: 500 .875rem/1.25rem var(--font-body); letter-spacing: .1px;
   color: var(--md-on-surface-variant); transition: background .2s var(--md-ease), color .2s var(--md-ease); }
 .main-nav a:hover { background: color-mix(in srgb, var(--md-on-surface) 8%, transparent); color: var(--md-on-surface); }

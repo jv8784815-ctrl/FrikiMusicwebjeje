@@ -1,25 +1,46 @@
 # FrikiMusic
 
-> Reproductor de música gratuito para Android, hecho por un solo desarrollador, con letras traducidas y sincronizadas línea a línea, streaming y descargas, color dinámico real y gestos naturales.
+> Reproductor de música gratuito para Android y Windows, hecho por un solo desarrollador, con letras traducidas y sincronizadas línea a línea, streaming y descargas, color dinámico real y una interfaz cuidada en Material Design 3.
 
-FrikiMusic es una aplicación para Android (fuera de Google Play, se instala vía APK) centrada en la experiencia de escuchar música con letra. Requiere Android 8.0 o superior y no tiene coste. Es un proyecto independiente desarrollado por una sola persona (Josexo), no por un equipo o una empresa.
+FrikiMusic es una aplicación centrada en la experiencia de escuchar música con letra. Existe en dos versiones: la app de Android (fuera de Google Play, se instala vía APK; requiere Android 8.0 o superior) y FrikiMusic Desktop para Windows (se instala con un instalador .exe, Windows de 64 bits). Ambas son gratuitas, sin anuncios y sin cuenta propia de FrikiMusic. Es un proyecto independiente desarrollado por una sola persona (Josexo), no por un equipo o una empresa.
 
-## Funciones principales
+## Funciones principales (Android y Windows)
 
 - Letras traducidas y sincronizadas línea a línea, con la estrofa activa resaltada y traducción sin salir del reproductor.
 - Color dinámico real: la interfaz toma el color que más se repite en la carátula del álbum.
-- Streaming y descarga de canciones, sin depender de una biblioteca local limitada.
+- Streaming y descarga de canciones para escuchar sin conexión.
+- Inicio de sesión opcional con Spotify y YouTube Music para traer tus playlists y Me gusta.
+- Perfiles de artista con biografía y foto, biblioteca, playlists locales y Me gusta.
+- Presencia de reproducción en Discord (muestra lo que se está escuchando).
+- Interfaz en Material Design 3 y temas personalizables.
+
+## Solo en Android
+
 - Gestos en el reproductor: deslizar hacia arriba para ver la letra, a los lados para cambiar de canción, hacia abajo para cerrar.
 - Estadísticas de escucha: artistas, álbumes y canciones que más se repiten.
-- Sincronización con cuentas de Spotify y YouTube Music.
-- Presencia de reproducción en Discord (muestra en tiempo real lo que se está escuchando).
-- Interfaz siguiendo las guías de Material Design 3.
+- Salas para escuchar música junto a otras personas, con chat y sugerencias de canciones.
+- Portadas animadas y portadas personalizadas por canción.
+- Widget de reproductor.
+- DJ con IA opcional, que usa la propia API key de Gemini de quien lo activa.
+
+## Solo en Windows
+
+- Importar playlists y álbumes pegando un enlace de SoundCloud, Apple Music, Deezer, Spotify o YouTube Music.
+- Pantalla completa con F11 y controles en la barra de tareas.
+- Reproductor de audio basado en VLC.
+
+## Privacidad y datos
+
+Ambas apps guardan tus datos (historial, preferencias, descargas, sesiones) solo en tu dispositivo: en Android, en el almacenamiento de la app; en Windows, en %APPDATA%\FrikiMusic. No hay cuenta de FrikiMusic, ni anuncios, ni analítica o reportes de fallos de terceros. Se contactan servicios externos solo para funcionar (YouTube Music, proveedores de letras, traducción de Google, Wikipedia, Discord, Spotify y similares). Las salas de Android usan un servidor relay del proyecto y el DJ con IA envía un resumen de escucha a Google Gemini solo si el usuario lo activa. Detalles completos en la política de privacidad.
 
 ## Estado del proyecto
 
-En desarrollo activo. La versión de PC (Windows) todavía no existe, está marcada como "en desarrollo, próximamente" en la web. El código de la web es de código abierto próximamente; por ahora no está publicado.
+En desarrollo activo. La versión de Android es la más completa (versión 3.1.x); FrikiMusic Desktop para Windows está en la versión 2.3.x y todavía no tiene todas las funciones de la de Android (por ejemplo, salas, DJ con IA y portadas animadas). Versiones para Linux y macOS: en desarrollo, próximamente. El código de la web es de código abierto próximamente; por ahora no está publicado. FrikiMusic no es una aplicación oficial de Spotify, YouTube, Google, Discord ni de ninguna otra marca mencionada, y no está afiliada a ellas.
 
 ## Enlaces
 
-- Descargar el APK (última versión): https://github.com/jv8784815-ctrl/repositpory-for-apk-3wfqewfd32134/releases/latest
+- Sitio web y descargas (Android y Windows): https://frikimusic.org/#descargas
+- Descargar el APK de Android (última versión): https://github.com/jv8784815-ctrl/repositpory-for-apk-3wfqewfd32134/releases/latest
+- Términos y Condiciones: https://frikimusic.org/terminos.html
+- Política de Privacidad: https://frikimusic.org/privacidad.html
 - Perfil de GitHub del desarrollador: https://github.com/jv8784815-ctrl

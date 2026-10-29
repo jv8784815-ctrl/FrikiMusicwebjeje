@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Política de Privacidad — FrikiMusic</title>
-<meta name="description" content="Política de privacidad de FrikiMusic: qué datos se recopilan, cómo se usan y cómo se guardan.">
+<meta name="description" content="Política de privacidad de FrikiMusic para Android y Windows: qué datos se recopilan, cómo se usan y cómo se guardan.">
 <link rel="canonical" href="https://frikimusic.org/privacidad.html">
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +22,7 @@
   <div class="wrap header-inner">
     <a class="brand" href="index.html#top" aria-label="FrikiMusic, inicio">
       <span class="brand-mark" aria-hidden="true">
-        <img src="assets/img/logo.png" alt="" width="20" height="20">
+        <img src="assets/img/logo.png" alt="" width="32" height="32">
       </span>
       <span class="brand-name">FrikiMusic</span>
     </a>
@@ -61,81 +63,96 @@
       <div class="legal-header">
         <p class="legal-eyebrow"><span class="material-symbols-rounded" aria-hidden="true">shield</span> Legal</p>
         <h1>Política de Privacidad</h1>
-        <p class="legal-updated">Última actualización: septiembre de 2026</p>
+        <p class="legal-updated">Última actualización: octubre de 2026</p>
       </div>
 
       <div class="legal-body">
         <div class="legal-section">
           <h2>1. Quién trata tus datos</h2>
-          <p>FrikiMusic es un proyecto independiente desarrollado por una sola persona (Josexo). Esta política explica qué información se recopila al usar la aplicación de Android y esta página web, y cómo se maneja.</p>
+          <p>FrikiMusic es un proyecto independiente desarrollado por una sola persona (Josexo). Esta política explica qué información se maneja al usar la aplicación de Android, la aplicación de escritorio para Windows (FrikiMusic Desktop) y esta página web, y cómo se trata. Cuando algo aplica solo a una de las versiones, se indica.</p>
         </div>
-
         <div class="legal-section">
-          <h2>2. Datos que guarda la aplicación</h2>
-          <p>La app guarda cierta información únicamente en tu propio dispositivo, nunca en un servidor propio de FrikiMusic:</p>
+          <h2>2. Datos que se guardan en tu dispositivo</h2>
+          <p>Ambas aplicaciones guardan cierta información únicamente en tu propio dispositivo, nunca en una cuenta ni en una base de datos propia de FrikiMusic:</p>
           <ul>
-            <li>El nombre y los artistas favoritos que elegís durante la configuración inicial (onboarding).</li>
-            <li>Tu historial de reproducción y estadísticas de escucha, usados solo para mostrarte tus propias estadísticas dentro de la app.</li>
-            <li>Preferencias de apariencia, reproducción y almacenamiento (por ejemplo, calidad de descarga o tema visual).</li>
-            <li>Las canciones que descargás para escuchar sin conexión, guardadas como archivos en tu dispositivo.</li>
+            <li>Tu nombre de perfil y los artistas favoritos que elegís en la configuración inicial.</li>
+            <li>Tu historial de reproducción y estadísticas de escucha, usados solo para mostrarte tus propias estadísticas, recomendaciones y mezclas dentro de la app.</li>
+            <li>Preferencias de apariencia, reproducción, letras y almacenamiento (tema, calidad de descarga, fondo personalizado, etc.).</li>
+            <li>Tus playlists locales, canciones marcadas con Me gusta y la última canción reproducida.</li>
+            <li>Las canciones que descargás para escuchar sin conexión, junto con su portada y letra, guardadas como archivos en tu dispositivo.</li>
+            <li>Las portadas personalizadas que asignás a tus canciones (solo Android).</li>
           </ul>
-          <p>Nada de esto se sube a un servidor de FrikiMusic ni se comparte con nadie. Si desinstalás la app, esta información se borra junto con ella.</p>
+          <p>En Android, estos datos viven en el almacenamiento de la app. En Windows, se guardan en la carpeta <strong>%APPDATA%\FrikiMusic</strong>. Nada de esto se sube a un servidor de FrikiMusic ni se comparte con nadie.</p>
+          <p>Si desinstalás la app en Android, esta información se borra junto con ella. En Windows, el desinstalador elimina el programa, pero la carpeta de datos %APPDATA%\FrikiMusic puede permanecer en tu equipo; podés borrarla manualmente si querés eliminar todo.</p>
         </div>
-
         <div class="legal-section">
           <h2>3. Cuentas de terceros (Spotify, YouTube Music, Discord)</h2>
-          <p>Si elegís iniciar sesión con Spotify o YouTube Music, o conectar Discord, la app guarda localmente en tu dispositivo el token de sesión necesario para mantenerte conectado. FrikiMusic no tiene acceso a tu contraseña ni la almacena. El tratamiento de tus datos dentro de esos servicios (por ejemplo tu perfil, tu música guardada o tu actividad) se rige por las políticas de privacidad de cada uno, no por esta.</p>
-          <p>Podés cerrar sesión de estas cuentas en cualquier momento desde los ajustes de la app.</p>
+          <p>Si elegís iniciar sesión con Spotify o YouTube Music, la app abre la página oficial de inicio de sesión del servicio (en una pantalla web integrada) y guarda localmente la sesión necesaria para mantenerte conectado, como cookies o tokens de acceso. En Windows, esa sesión se guarda cifrada con una clave generada en tu equipo. FrikiMusic no guarda tu contraseña. El tratamiento de tus datos dentro de esos servicios (perfil, música guardada, actividad) se rige por las políticas de privacidad de cada uno, no por esta.</p>
+          <p>La integración con Discord es opcional. En Android, si la activás, la app guarda de forma cifrada en tu dispositivo el token de sesión de Discord y usa ese acceso para mostrar lo que estás escuchando. En Windows, la actividad se publica a través de la conexión local con la aplicación de Discord abierta en tu equipo, sin iniciar sesión en FrikiMusic. En ambos casos se comparte con Discord el título, el artista, la carátula y el progreso de la canción en reproducción.</p>
+          <p>Podés cerrar sesión de estas cuentas o desactivar la integración con Discord en cualquier momento desde los ajustes de la app.</p>
         </div>
-
         <div class="legal-section">
-          <h2>4. Letras de canciones</h2>
-          <p>Para mostrar letras sincronizadas, la app consulta un proveedor externo (Paxsenix) enviando datos básicos de la canción (como título y artista) para poder encontrar la letra correspondiente. No se envía información personal en esa consulta.</p>
+          <h2>4. Letras y traducción</h2>
+          <p>Para mostrar letras sincronizadas, la app consulta proveedores externos de letras (entre ellos LrcLib, KuGou, SimpMusic, BetterLyrics, Paxsenix, Unison y YouLyPlus), enviando datos básicos de la canción como título, artista, álbum y duración para encontrar la letra correspondiente. No se envía información personal en esas consultas.</p>
+          <p>Si usás la traducción de letras, el texto de la letra se envía al servicio de traducción de Google para obtener la traducción. Esos servicios externos pueden registrar la dirección IP desde la que se hace la consulta, según sus propias políticas.</p>
         </div>
-
         <div class="legal-section">
-          <h2>5. Formulario de contacto de esta web</h2>
-          <p>Cuando usás el formulario de "Enviar comentario" de esta página, los datos que escribís (nombre, mensaje y correo opcional) se envían directamente al correo del desarrollador a través de Web3Forms, un servicio externo de formularios. Esos datos se usan únicamente para responderte y no se agregan a ninguna lista de correo ni se comparten con terceros.</p>
-        </div>
-
-        <div class="legal-section">
-          <h2>6. Estadísticas de descargas de la web</h2>
-          <p>La sección de Descargas de esta web muestra un contador público de descargas, obtenido directamente desde las estadísticas de GitHub. Esa información es agregada y pública: no identifica a ninguna persona en particular.</p>
-        </div>
-
-        <div class="legal-section">
-          <h2>7. Publicidad y rastreo</h2>
-          <p>FrikiMusic no muestra anuncios, no usa redes publicitarias y no incluye herramientas de rastreo o analítica de terceros dentro de la app. No se recopila ni se vende información con fines publicitarios.</p>
-        </div>
-
-        <div class="legal-section">
-          <h2>8. Permisos del dispositivo</h2>
-          <p>La app pide algunos permisos de Android necesarios para funcionar, y ninguno se usa para otra cosa:</p>
+          <h2>5. Otros servicios que consulta la app</h2>
+          <p>Para funcionar, las apps se conectan a servicios de terceros. En cada caso se envía solo lo necesario para esa función:</p>
           <ul>
-            <li><strong>Internet:</strong> para buscar y reproducir música y para las funciones de sincronización.</li>
-            <li><strong>Reproducción en segundo plano:</strong> para que la música siga sonando aunque cambies de app.</li>
-            <li><strong>Notificaciones:</strong> para mostrar los controles de reproducción en la barra de notificaciones.</li>
-            <li><strong>Almacenamiento</strong> (en versiones antiguas de Android): para guardar las canciones descargadas.</li>
+            <li><strong>YouTube Music y servicios de reproducción:</strong> para buscar, obtener el audio y las carátulas, y mostrar tu inicio. Si hace falta, se usa un servicio intermedio público (Piped) para resolver la reproducción.</li>
+            <li><strong>Wikipedia y fuentes de imágenes:</strong> para mostrar la biografía y la foto de un artista, enviando el nombre del artista.</li>
+            <li><strong>Importación por enlace (Windows):</strong> al pegar un enlace de SoundCloud, Apple Music, Deezer, Spotify o YouTube Music, la app consulta ese servicio para leer la playlist o el álbum y luego busca las canciones en YouTube Music.</li>
+            <li><strong>Portadas animadas (Android):</strong> para buscar videos o animaciones de portada, la app consulta servicios como Spotify, Apple Music, Tidal y BetterLyrics enviando título y artista. En el caso de Spotify se usa tu sesión si la iniciaste.</li>
+            <li><strong>Actualizaciones (Android):</strong> la app consulta periódicamente la página de versiones de GitHub para avisarte si hay una versión nueva. GitHub puede registrar tu dirección IP. La app de Windows no busca actualizaciones por su cuenta.</li>
           </ul>
+          <p>Estos servicios tienen sus propias políticas de privacidad y FrikiMusic no controla cómo las aplican.</p>
         </div>
-
         <div class="legal-section">
-          <h2>9. Menores de edad</h2>
-          <p>FrikiMusic no está dirigida específicamente a menores de edad ni recopila a sabiendas datos personales identificables de niños. Si conectás cuentas de terceros como Spotify o YouTube Music, aplican también las políticas de edad mínima de esos servicios.</p>
+          <h2>6. Salas Escuchar juntos (solo Android)</h2>
+          <p>Si usás la función de salas para escuchar música con otras personas, la app se conecta a un servidor relay del proyecto (alojado en Render) que reenvía en tiempo real la información de la sala: el nombre de usuario que elegís, el código de la sala, quién entra y sale, el estado de reproducción, las canciones sugeridas y los mensajes de chat. Esta información se usa únicamente para que la sala funcione y no se usa con fines publicitarios ni se vende.</p>
+          <p>Tené en cuenta que los demás integrantes de la sala pueden ver tu nombre de usuario y tus mensajes. No compartas información personal sensible en el chat. La sesión de sala guardada en tu dispositivo caduca a las 6 horas.</p>
         </div>
-
         <div class="legal-section">
-          <h2>10. Tus datos, tu control</h2>
-          <p>Como casi todo se guarda localmente en tu dispositivo, tenés control total: podés borrar tu historial, tus descargas o cerrar sesión de las cuentas conectadas desde los ajustes de la app en cualquier momento. Desinstalar la app elimina toda la información guardada localmente.</p>
+          <h2>7. DJ con IA de Gemini (solo Android, opcional)</h2>
+          <p>Esta función está desactivada por defecto y solo funciona si vos mismo cargás tu propia API key de Google Gemini en los ajustes. Esa clave se guarda en tu dispositivo. Cuando la usás, la app envía a Google Gemini un resumen de tus hábitos de escucha (por ejemplo, tus artistas más escuchados, canciones recientes y artistas nuevos) para generar la presentación del DJ. El tratamiento de esa información lo rige la política de Google para su API de Gemini. Podés borrar tu clave y desactivar la función cuando quieras.</p>
         </div>
-
         <div class="legal-section">
-          <h2>11. Cambios en esta política</h2>
-          <p>Esta política puede actualizarse si la app suma nuevas funciones o servicios. Los cambios se van a reflejar en esta misma página, junto con la fecha de última actualización.</p>
+          <h2>8. Esta página web</h2>
+          <p><strong>Formulario de contacto.</strong> Cuando usás el formulario de "Enviar comentario", los datos que escribís (nombre, mensaje y correo opcional) se envían directamente al correo del desarrollador a través de Web3Forms, un servicio externo de formularios. Se usan únicamente para responderte y no se agregan a ninguna lista de correo ni se comparten con terceros.</p>
+          <p><strong>Contador de descargas.</strong> La sección de Descargas muestra un contador público obtenido desde las estadísticas de GitHub. Es información agregada que no identifica a ninguna persona.</p>
+          <p><strong>Alojamiento y fuentes.</strong> El sitio está alojado en Vercel y carga tipografías desde Google Fonts, por lo que esos proveedores pueden registrar datos técnicos de la visita, como la dirección IP y el navegador, según sus propias políticas. La web no usa cookies de seguimiento ni herramientas de analítica propias.</p>
         </div>
-
         <div class="legal-section">
-          <h2>12. Contacto</h2>
+          <h2>9. Publicidad y rastreo</h2>
+          <p>FrikiMusic no muestra anuncios, no usa redes publicitarias y no incluye herramientas de rastreo, analítica ni reportes de fallos de terceros dentro de las apps de Android y Windows. No se recopila ni se vende información con fines publicitarios.</p>
+        </div>
+        <div class="legal-section">
+          <h2>10. Permisos y acceso a tu equipo</h2>
+          <p><strong>Android.</strong> La app pide permisos necesarios para funcionar, y ninguno se usa para otra cosa:</p>
+          <ul>
+            <li><strong>Internet y estado de la red:</strong> para buscar y reproducir música y para las funciones de sincronización.</li>
+            <li><strong>Reproducción en segundo plano y mantener activo el dispositivo:</strong> para que la música siga sonando aunque cambies de app.</li>
+            <li><strong>Notificaciones:</strong> para mostrar los controles de reproducción.</li>
+            <li><strong>Audio y almacenamiento:</strong> para mostrar la música guardada en tu dispositivo y guardar las descargas. Los archivos no se suben a ningún servidor.</li>
+            <li><strong>Vibración:</strong> para la respuesta háptica de algunos gestos.</li>
+          </ul>
+          <p><strong>Windows.</strong> La app se instala por defecto sin permisos de administrador, solo accede a su propia carpeta de datos y a los archivos que vos elijas, y se conecta a internet para las funciones descritas. Incluye un reproductor de audio propio (VLC) como respaldo; no se instala como una aplicación VLC separada.</p>
+        </div>
+        <div class="legal-section">
+          <h2>11. Menores de edad</h2>
+          <p>FrikiMusic no está dirigida específicamente a menores de edad ni recopila a sabiendas datos personales identificables de niños. Si conectás cuentas de terceros como Spotify, YouTube Music o Discord, aplican también las políticas de edad mínima de esos servicios.</p>
+        </div>
+        <div class="legal-section">
+          <h2>12. Tus datos, tu control</h2>
+          <p>Como casi todo se guarda localmente en tu dispositivo, tenés control total: podés borrar tu historial, tus descargas, tu clave de Gemini o cerrar sesión de las cuentas conectadas desde los ajustes de la app en cualquier momento. Desinstalar la app de Android elimina toda la información guardada localmente; en Windows, además, podés borrar la carpeta %APPDATA%\FrikiMusic. Para los datos que enviás a servicios externos, escribí a esos servicios según sus propios procedimientos.</p>
+        </div>
+        <div class="legal-section">
+          <h2>13. Cambios en esta política</h2>
+          <p>Esta política puede actualizarse si las apps suman nuevas funciones o servicios. Los cambios se van a reflejar en esta misma página, junto con la fecha de última actualización.</p>
+        </div>
+        <div class="legal-section">
+          <h2>14. Contacto</h2>
           <div class="legal-contact">
             <p>Si tenés dudas sobre cómo se manejan tus datos, podés escribir directamente desde la sección de <a href="index.html#descargas">soporte</a> de la web.</p>
           </div>
@@ -149,7 +166,7 @@
   <div class="wrap footer-inner">
     <div class="footer-brand">
       <span class="brand-mark" aria-hidden="true">
-        <img src="assets/img/logo.png" alt="" width="20" height="20">
+        <img src="assets/img/logo.png" alt="" width="32" height="32">
       </span>
       <span>FrikiMusic</span>
     </div>
@@ -163,7 +180,7 @@
       <a href="privacidad.html">Privacidad</a>
     </nav>
 
-    <p class="footer-copy">© 2026 FrikiMusic. Proyecto independiente para Android.</p>
+    <p class="footer-copy">© 2026 FrikiMusic. Proyecto independiente para Android y Windows.</p>
   </div>
 </footer>
 
