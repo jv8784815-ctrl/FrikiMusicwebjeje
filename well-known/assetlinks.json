@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.frikimusic",
+      "sha256_cert_fingerprints": [
+        "A3:35:9C:B5:BA:0B:C2:94:4E:28:F7:BD:87:C5:D1:70:67:86:50:F0:42:A3:55:63:97:D7:86:75:AB:EB:12:CA"
+      ]
+    }
+  }
+]

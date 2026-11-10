@@ -22,6 +22,14 @@
     {
       "source": "/terminos",
       "destination": "/terminos.html"
+    },
+    {
+      "source": "/p/:code",
+      "destination": "/compartir.html"
+    },
+    {
+      "source": "/.well-known/assetlinks.json",
+      "destination": "/well-known/assetlinks.json"
     }
   ]
 }

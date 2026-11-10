@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playlist · FrikiMusic</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,300..500,0..1,0" rel="stylesheet">
+<script>try{var t=localStorage.getItem("fm-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/md3.css">
+<link rel="stylesheet" href="/css/m3-expressive.css">
+<style>
+  body{margin:0;min-height:100vh;background:var(--bg-gradient,var(--bg));background-color:var(--bg);color:var(--text-primary);font-family:var(--font-body)}
+  .share{max-width:640px;margin:0 auto;padding:32px 18px 64px}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:28px;color:var(--text-primary);text-decoration:none;font-family:var(--font-display);font-weight:600}
+  .brand img{width:34px;height:34px;border-radius:10px}
+  .share h1{font-family:var(--font-display);font-size:clamp(1.6rem,5vw,2.1rem);margin:0 0 6px;line-height:1.15}
+  .share .sub{color:var(--text-secondary);margin:0 0 20px}
+  .share .actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+  .share .actions .btn{text-decoration:none}
+  .tracks{list-style:none;margin:0;padding:0;background:var(--surface-container);border:1px solid var(--outline);border-radius:var(--radius-md);overflow:hidden}
+  .tracks li{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--outline-soft)}
+  .tracks li:last-child{border-bottom:0}
+  .tracks img{width:44px;height:44px;border-radius:8px;object-fit:cover;background:var(--surface-container-high);flex:none}
+  .tracks .t{min-width:0}
+  .tracks .t b,.tracks .t span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tracks .t span{color:var(--text-secondary);font-size:.88rem}
+  .msg{padding:56px 0;text-align:center;color:var(--text-secondary)}
+</style>
+</head>
+<body>
+<main class="share">
+  <a class="brand" href="/"><img src="/assets/img/icon-192.png" alt="">FrikiMusic</a>
+  <div id="root"><div class="msg">Cargando playlist…</div></div>
+</main>
+<script>
+// ── Configuración: copia estos dos valores de Supabase → Project Settings → API ──
+var SUPABASE_URL = "https://qrznklczpotynptanpus.supabase.co";   // "Project URL", sin / al final
+var SUPABASE_ANON_KEY = "sb_publishable_4qFWuKXE8HPvNU7ili5aqA_ZAdlCPvG";   // clave pública (publishable). NUNCA la service_role
+// ──────────────────────────────────────────────────────────────────────────────
+var APP_PACKAGE = "com.frikimusic";
+
+(async function () {
+  var root = document.getElementById("root");
+  function fail(text) {
+    root.innerHTML = "";
+    var d = document.createElement("div");
+    d.className = "msg";
+    d.textContent = text;
+    root.appendChild(d);
+  }
+  var code = (location.pathname.split("/").filter(Boolean)[1] || "").toLowerCase();
+  if (!/^[a-z0-9]{6,32}$/.test(code)) return fail("Este enlace no es válido.");
+
+  var data;
+  try {
+    var headers = { apikey: SUPABASE_ANON_KEY, "Content-Type": "application/json" };
+    // Las claves nuevas (sb_publishable_...) van solo en apikey; las antiguas (eyJ...) también como Authorization.
+    if (SUPABASE_ANON_KEY.indexOf("sb_") !== 0) headers.Authorization = "Bearer " + SUPABASE_ANON_KEY;
+    var r = await fetch(SUPABASE_URL + "/rest/v1/rpc/get_shared_playlist", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({ p_code: code })
+    });
+    if (!r.ok) throw new Error("http " + r.status);
+    data = await r.json();
+  } catch (e) {
+    return fail("No se pudo cargar la playlist. Inténtalo de nuevo en un momento.");
+  }
+  if (!data) return fail("Este enlace no existe, caducó o su dueño lo desactivó.");
+
+  document.title = data.name + " · FrikiMusic";
+  root.innerHTML = "";
+
+  var h = document.createElement("h1");
+  h.textContent = data.name;
+  var sub = document.createElement("p");
+  sub.className = "sub";
+  sub.textContent = (data.owner_name ? "De " + data.owner_name + " · " : "") + data.track_count + " canciones";
+
+  var actions = document.createElement("div");
+  actions.className = "actions";
+  var fallback = location.origin + "/#descargas";
+  var open = document.createElement("a");
+  open.className = "btn btn-primary";
+  open.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">open_in_new</span> Abrir en FrikiMusic';
+  open.href = "intent://" + location.host + location.pathname +
+    "#Intent;scheme=https;package=" + APP_PACKAGE +
+    ";S.browser_fallback_url=" + encodeURIComponent(fallback) + ";end";
+  var dl = document.createElement("a");
+  dl.className = "btn btn-ghost";
+  dl.innerHTML = '<span class="material-symbols-rounded" aria-hidden="true">download</span> Descargar la app';
+  dl.href = fallback;
+  actions.append(open, dl);
+
+  var ol = document.createElement("ol");
+  ol.className = "tracks";
+  (data.tracks || []).forEach(function (t) {
+    var li = document.createElement("li");
+    var img = document.createElement("img");
+    img.loading = "lazy";
+    img.alt = "";
+    if (t.artwork_url) img.src = t.artwork_url;
+    var box = document.createElement("div");
+    box.className = "t";
+    var b = document.createElement("b");
+    b.textContent = t.title || "";
+    var s = document.createElement("span");
+    s.textContent = t.artist || "";
+    box.append(b, s);
+    li.append(img, box);
+    ol.appendChild(li);
+  });
+  root.append(h, sub, actions, ol);
+})();
+</script>
+</body>
+</html>
